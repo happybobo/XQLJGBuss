@@ -1,0 +1,95 @@
+//
+//  BussHeader.pch
+//  JGBuss
+//
+//  Created by apple on 16/3/25.
+//  Copyright © 2016年 apple. All rights reserved.
+//
+#import <Availability.h>
+#import <Foundation/Foundation.h>
+#ifndef BussHeader_pch
+#define BussHeader_pch
+
+
+#define Scale SCREEN_W/375
+#ifdef DEBUG
+#   define JGLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#   define JGLog(...)
+#endif
+
+#define JGSVPROGRESSLOADING [SVProgressHUD showWithStatus:@"登录中..." maskType:SVProgressHUDMaskTypeNone];
+#define JGSVPROGRESSLOAD(f) [SVProgressHUD showWithStatus:f maskType:SVProgressHUDMaskTypeNone];
+#define JGFAILREQUESTCALLBACK [SVProgressHUD dismiss];\
+[self showAlertViewWithText:NETERROETEXT duration:1];
+
+//颜色RGB
+#define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1]
+#define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+
+#define LIGHTGRAYTEXT RGBCOLOR(102, 102, 102)
+#define BACKCOLORGRAY RGBCOLOR(241, 241, 241)
+#define WHITECOLOR RGBCOLOR(255, 255, 255)
+#define YELLOWCOLOR RGBCOLOR(245, 201, 48)
+#define BLUECOLOR RGBCOLOR(59, 155, 255)
+
+#define JGNAVIGATIONBARCLEARSTYLE -(void)viewWillAppear:(BOOL)animated\
+{\
+[super viewWillAppear:animated];\
+self.view.backgroundColor = BACKCOLORGRAY;\
+[self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];\
+CGFloat top = 5;\
+CGFloat bottom = 5 ;\
+CGFloat left = 0;\
+CGFloat right = 0;\
+UIEdgeInsets insets = UIEdgeInsetsMake(top, left, bottom, right);\
+[self.navigationController.navigationBar setBackgroundImage:[[UIImage imageNamed:@"icon-navigationBar"] resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch] forBarMetrics:UIBarMetricsDefault];\
+}
+
+//字体
+#define FONT(f)                     [UIFont systemFontOfSize:f]
+#define JGFONT(f)                   [UIFont fontWithName:@"MarkerFelt-Thin" size:f]
+#define BOLDFONT(f)                 [UIFont boldSystemFontOfSize:f]
+
+#define SCREEN_W [UIScreen mainScreen].bounds.size.width
+#define SCREEN_H [UIScreen mainScreen].bounds.size.height
+
+#define USERDEFAULTS [NSUserDefaults standardUserDefaults]
+#define APPLICATION  [UIApplication sharedApplication]
+
+#if __has_feature(objc_arc)
+#define IMP_BLOCK_SELF(type) __weak type *block_self=self;
+#else
+#define IMP_BLOCK_SELF(type) __block type *block_self=self;
+#endif
+
+#define USER [JGUser user]
+#define NotificationCenter [NSNotificationCenter defaultCenter]
+
+//API 切换
+#define NETERROETEXT @"请检查您的网络设置"
+//#define APIURLCOMMON @"http://192.168.1.233/JianGuo_Server/"//局域网
+#define APIURLCOMMON @"http://101.200.205.243:8080/"//外网
+
+//通知
+static NSString *kNotificationDidReceiveMessage = @"kNotificationDidReceiveMessage";
+static NSString *kNotificationOpenIMClient = @"kNotificationOpenIMClient";
+static NSString *kNotificationSelectCity =  @"kNotificationSelectCity";
+static NSString *kNotificationSelectWorkDate =  @"kNotificationSelectWorkDate";
+
+
+#ifdef __OBJC__
+
+#import <UIKit/UIKit.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <AFNetworking/AFNetworking.h>
+#import <SVProgressHUD/SVProgressHUD.h>
+#import "UIViewExt.h"
+#import <MJRefresh/MJRefresh.h>
+#import <MJExtension/MJExtension.h>
+#import "JGUser.h"
+#import "JGIMClient.h"
+
+#endif
+
+#endif /* BussHeader_pch */
