@@ -84,7 +84,6 @@
 		1817B9C71CA4CF94005D9238 /* UILabel+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1817B9831CA4CF94005D9238 /* UILabel+Additions.m */; };
 		1817B9C81CA4CF94005D9238 /* UITextView+placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1817B9851CA4CF94005D9238 /* UITextView+placeholder.m */; };
 		1817B9C91CA4CF94005D9238 /* UIView+AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1817B9871CA4CF94005D9238 /* UIView+AlertView.m */; };
-		1817B9CA1CA4CF94005D9238 /* UIWindow+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1817B9891CA4CF94005D9238 /* UIWindow+Extension.m */; };
 		1817B9CD1CA4D03B005D9238 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1817B9CC1CA4D03B005D9238 /* MineViewController.m */; };
 		1817B9D01CA4D0C3005D9238 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 1817B9CF1CA4D0C3005D9238 /* UIViewExt.m */; };
 		1817B9D31CA4D109005D9238 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1817B9D21CA4D109005D9238 /* HomeViewController.m */; };
@@ -180,6 +179,7 @@
 		1895B4881CA4CA0900F990D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1895B4871CA4CA0900F990D6 /* AppDelegate.m */; };
 		1895B48E1CA4CA0900F990D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1895B48C1CA4CA0900F990D6 /* Main.storyboard */; };
 		1895B4901CA4CA0900F990D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1895B48F1CA4CA0900F990D6 /* Assets.xcassets */; };
+		189B66BC1CD0D27100AD4FA1 /* UIWindow+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 189B66BB1CD0D27100AD4FA1 /* UIWindow+Extension.m */; };
 		189F590E1CC76AD300F45E9B /* JGHTTPClient+PayPassWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 189F590D1CC76AD300F45E9B /* JGHTTPClient+PayPassWord.m */; };
 		189F59151CC7858900F45E9B /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 189F59131CC7858900F45E9B /* ChatCell.m */; };
 		189F59161CC7858900F45E9B /* ChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189F59141CC7858900F45E9B /* ChatCell.xib */; };
@@ -325,8 +325,6 @@
 		1817B9851CA4CF94005D9238 /* UITextView+placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+placeholder.m"; sourceTree = "<group>"; };
 		1817B9861CA4CF94005D9238 /* UIView+AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AlertView.h"; sourceTree = "<group>"; };
 		1817B9871CA4CF94005D9238 /* UIView+AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AlertView.m"; sourceTree = "<group>"; };
-		1817B9881CA4CF94005D9238 /* UIWindow+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIWindow+Extension.h"; path = "../Tools/UIWindow+Extension.h"; sourceTree = "<group>"; };
-		1817B9891CA4CF94005D9238 /* UIWindow+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIWindow+Extension.m"; path = "../Tools/UIWindow+Extension.m"; sourceTree = "<group>"; };
 		1817B9CB1CA4D03B005D9238 /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
 		1817B9CC1CA4D03B005D9238 /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
 		1817B9CE1CA4D0C3005D9238 /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
@@ -510,6 +508,8 @@
 		1895B48D1CA4CA0900F990D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1895B48F1CA4CA0900F990D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1895B4941CA4CA0900F990D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		189B66BA1CD0D27100AD4FA1 /* UIWindow+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIWindow+Extension.h"; path = "JGBuss/UIWindow+Extension.h"; sourceTree = SOURCE_ROOT; };
+		189B66BB1CD0D27100AD4FA1 /* UIWindow+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIWindow+Extension.m"; path = "JGBuss/UIWindow+Extension.m"; sourceTree = SOURCE_ROOT; };
 		189F590C1CC76AD300F45E9B /* JGHTTPClient+PayPassWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JGHTTPClient+PayPassWord.h"; sourceTree = "<group>"; };
 		189F590D1CC76AD300F45E9B /* JGHTTPClient+PayPassWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JGHTTPClient+PayPassWord.m"; sourceTree = "<group>"; };
 		189F59121CC7858900F45E9B /* ChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCell.h; sourceTree = "<group>"; };
@@ -820,8 +820,8 @@
 			children = (
 				1895B4861CA4CA0900F990D6 /* AppDelegate.h */,
 				1895B4871CA4CA0900F990D6 /* AppDelegate.m */,
-				1817B9881CA4CF94005D9238 /* UIWindow+Extension.h */,
-				1817B9891CA4CF94005D9238 /* UIWindow+Extension.m */,
+				189B66BA1CD0D27100AD4FA1 /* UIWindow+Extension.h */,
+				189B66BB1CD0D27100AD4FA1 /* UIWindow+Extension.m */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -1620,7 +1620,6 @@
 				184092411CAE0C3000735F25 /* QNResumeUpload.m in Sources */,
 				18478B631CAA82C6006DFF1D /* PickerView.m in Sources */,
 				1895B4851CA4CA0900F990D6 /* main.m in Sources */,
-				1817B9CA1CA4CF94005D9238 /* UIWindow+Extension.m in Sources */,
 				184092361CAE0C3000735F25 /* QNUrlSafeBase64.m in Sources */,
 				1817B98A1CA4CF94005D9238 /* AvatarBrowser.m in Sources */,
 				187C58011CC09E9600394002 /* JGMessage.m in Sources */,
@@ -1663,6 +1662,7 @@
 				18FED3341CABE42C009C9225 /* MerchantModel.m in Sources */,
 				18770DC41CB63BFA00CD4466 /* IBLabel.m in Sources */,
 				184092241CAE0C3000735F25 /* QNDomain.m in Sources */,
+				189B66BC1CD0D27100AD4FA1 /* UIWindow+Extension.m in Sources */,
 				1817B9D31CA4D109005D9238 /* HomeViewController.m in Sources */,
 				18478B5E1CAA7374006DFF1D /* IssueViewController.m in Sources */,
 				184092231CAE0C3000735F25 /* QNDnsManager.m in Sources */,
