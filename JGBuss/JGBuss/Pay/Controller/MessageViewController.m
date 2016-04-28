@@ -284,10 +284,11 @@
     
 }
 
--(void)scrollViewDidScroll:(UIScrollView *)scrollView
+-(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
 {
     [self.view endEditing:YES];
 }
+
 -(void)dealloc
 {
     [NotificationCenter removeObserver:self name:kNotificationDidReceiveMessage object:nil];

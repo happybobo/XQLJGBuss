@@ -298,6 +298,7 @@
         settleVC.nvJobId = @"0";
     }
     settleVC.money = self.moneyL.text;
+    settleVC.model = self.manageModel;
     [self.navigationController pushViewController:settleVC animated:YES];
 }
 

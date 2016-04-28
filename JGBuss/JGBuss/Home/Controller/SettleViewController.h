@@ -7,9 +7,11 @@
 //
 
 #import "NavigatinViewController.h"
+#import "ManagedModel.h"
 
 @interface SettleViewController : NavigatinViewController
 
+@property (nonatomic,strong) ManagedModel *model;
 @property (nonatomic,copy) NSString *nvJobId;
 @property (nonatomic,copy) NSString *jobId;
 

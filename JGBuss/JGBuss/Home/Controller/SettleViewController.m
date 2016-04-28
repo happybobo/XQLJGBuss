@@ -245,6 +245,7 @@
     JGSVPROGRESSLOAD(@"加载中...")
     [JGHTTPClient getToPayWageListByjobId:self.jobId nvJobId:self.nvJobId count:count Success:^(id responseObject) {
         
+        countL.text = [NSString stringWithFormat:@"总计%@人",[responseObject[@"data"] objectForKey:@"user_sum"]];
         [SVProgressHUD dismiss];
         [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
@@ -396,17 +397,17 @@
     [bigView addSubview:bgView];
     
     tittleL = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, SCREEN_W-150, 20)];
-    tittleL.text = @"凯宾斯基酒店宴会厅服务员";
+    tittleL.text = self.model.name;
     tittleL.font = FONT(16);
     [bgView addSubview:tittleL];
     
     typeView = [[UIImageView alloc] initWithFrame:CGRectMake(tittleL.right+10, tittleL.top, 20, 20)];
-    typeView.image = [UIImage imageNamed:@"33"];
+    typeView.image = [UIImage imageNamed:[self gettypeImage:self.model.hot]];
     [bgView addSubview:typeView];
     
     timeL  = [[UILabel alloc] initWithFrame:CGRectMake(typeView.right+10, typeView.top, SCREEN_W-10-typeView.right-10, 20)];
     timeL.textAlignment = NSTextAlignmentRight;
-    timeL.text = @"4月1日";
+    timeL.text = [[NSString stringWithFormat:@"%@",self.model.reg_date] substringWithRange:NSMakeRange(5, 5)];
     [bgView addSubview:timeL];
     
     UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, bgView.bottom+10, SCREEN_W, 30)];
@@ -436,6 +437,37 @@
     [bottomView addSubview:lineView];
     
     return bigView;
+    
+}
+-(NSString *)gettypeImage:(NSString*)hot
+{
+    switch (hot.intValue) {
+        case 0:{
+            
+            return @"meiyou";
+            
+            break;
+        } case 1:{
+            
+            return @"22";
+            
+            break;
+        } case 2:{
+            
+            return @"33";
+            
+            break;
+        } case 3:{
+            
+            return @"77";
+            
+            break;
+        }
+        default:
+            return @"meiyou";
+            break;
+    }
+    
     
 }
 @end

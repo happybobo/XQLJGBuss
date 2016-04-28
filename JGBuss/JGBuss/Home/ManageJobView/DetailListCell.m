@@ -64,8 +64,8 @@
     int status = model.user_status.intValue;
     
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:model.name_image] placeholderImage:[UIImage imageNamed:@"icon_touxiang"]];
-    if (model.realname.intValue != 0) {
-        self.nameL.text = model.realname;
+    if (model.name.length&&![model.name isEqualToString:@"null"]&&![model.name isKindOfClass:[NSNull class]]) {
+        self.nameL.text = model.name;
     }
     self.genderView.image = [UIImage imageNamed:[self selectGenderImage:model.sex_resume]];
     if (model.school.length!=0) {

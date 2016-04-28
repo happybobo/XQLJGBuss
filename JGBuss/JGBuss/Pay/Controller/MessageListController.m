@@ -103,39 +103,31 @@
 -(void)receiveMessage:(NSNotification *)noti
 {
     if (self.tabBarController.selectedIndex!=2) {
-        [self.tabBarItem setBadgeValue:@"1"];
-    }else{
-        [self getLastConversitions];
+        [self.tabBarItem setBadgeValue:@""];
     }
-    
+    AVIMTextMessage *message = noti.object;
+    BOOL isNewConversation = NO;
+    for (AVIMConversation *conversation in self.conversationArr) {
+        if ([conversation.conversationId isEqualToString:message.conversationId]) {
+            isNewConversation = YES;
+        }
+    }
+    if (!isNewConversation) {//一个新对话的消息
+        [self getLastConversitions];
+    }else{
+        for (int i=0;i<self.conversationArr.count;i++) {
+            AVIMConversation *conversation = [self.conversationArr objectAtIndex:i];
+            if ([conversation.conversationId isEqualToString:message.conversationId]) {
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                MessageListCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+                cell.redView.hidden = NO;
+            }
+        }
+    }
 }
 
-#pragma 用创建好的client 查询最近对话列表
-- (void)getLastConversitionsByClient{
-    
-    if (self.conversationArr.count) {
-        [self.conversationArr removeAllObjects];
-    }
-    
-    //用 self.client 创建一个 query 来查询最近的 对话列表
-    AVIMConversationQuery *query = [self.client conversationQuery];
-    // Tom 设置查询最近 20 个活跃对话
-    query.limit = 100;
-    [query whereKey:@"m" containedIn:@[[NSString stringWithFormat:@"%@",USER.login_id]]];//查询 有自己参与的 对话 数组
-    [query findConversationsWithCallback:^(NSArray *objects, NSError *error) {
-        JGLog(@"查询成功！");
-        [self.tableView.mj_header endRefreshing];
-        if (self.lastMessageArr.count) {
-            [self.lastMessageArr removeAllObjects];
-        }
-        [self.conversationArr addObjectsFromArray:objects];
-        for (AVIMConversation *conversation in objects) {
-            [self getIconByGetLastMessage:conversation];//获取每个对话列表中每个对话的最后一条消息
-        }
-        
-    }];
-    
-}
+#pragma 查询最近对话列表
 - (void)getLastConversitions{
     
     if (self.conversationArr.count) {
@@ -146,7 +138,7 @@
     AVIMConversationQuery *query = [[[JGIMClient shareJgIm] getAclient] conversationQuery];
     // Tom 设置查询最近 20 个活跃对话
     query.limit = 100;
-    [query whereKey:@"m" containedIn:@[[NSString stringWithFormat:@"%@",USER.login_id]]];//查询 有自己参与的 对话 数组
+    [query whereKey:kAVIMKeyMember containedIn:@[[NSString stringWithFormat:@"%@",USER.login_id]]];//查询 有自己参与的 对话 数组
     [query findConversationsWithCallback:^(NSArray *objects, NSError *error) {
         JGLog(@"查询成功！");
         [self.tableView.mj_header endRefreshing];
@@ -154,31 +146,16 @@
             [self.lastMessageArr removeAllObjects];
         }
         [self.conversationArr addObjectsFromArray:objects];
-        for (AVIMConversation *conversation in objects) {
-            [self getIconByGetLastMessage:conversation];//获取每个对话列表中每个对话的最后一条消息
-        }
+        
+        [self.tableView reloadData];
+
         
     }];
     
 }
-
--(void)getIconByGetLastMessage:(AVIMConversation *)conversation
-{
-    [conversation queryMessagesFromServerWithLimit:1 callback:^(NSArray *objects, NSError *error) {
-        if (objects.count!=0) {
-            JGLog(@"%@",objects)
-            [self.lastMessageArr addObject:[objects firstObject]];//获取最近消息,用来显示对话列表页的显示,
-        }
-        
-        [self.tableView reloadData];
-#warning 有可能最后一条是自己发送的,这时 没办法显示对方的头像和名字
-    }];
-}
-
-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.lastMessageArr.count;
+    return self.conversationArr.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -188,15 +165,22 @@
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"MessageListCell" owner:nil options:nil]lastObject];
     }
-    AVIMTypedMessage *message = self.lastMessageArr[indexPath.row];
-    
     AVIMConversation *conversation = self.conversationArr[indexPath.row];
     
-    cell.messageContentL.text = message.text;
+    [conversation queryMessagesFromServerWithLimit:1 callback:^(NSArray *objects, NSError *error) {
+        if (objects.count) {
+            
+            AVIMTypedMessage *message = [objects firstObject];
+            cell.messageContentL.text = message.text;
+            
+            cell.timeL.text = [DateOrTimeTool compareDate:[[NSString stringWithFormat:@"%lld",message.sendTimestamp] substringToIndex:10]];
+        }else{
+            cell.timeL.text = [[NSString stringWithFormat:@"%@",conversation.createAt] substringWithRange:NSMakeRange(5, 5)];
+        }
+    }];
+    
     
     cell.nameL.text = [conversation.attributes objectForKey:@"creatname"];
-    
-    cell.timeL.text = [DateOrTimeTool compareDate:[[NSString stringWithFormat:@"%lld",message.sendTimestamp] substringToIndex:10]];
     
     [cell.iconView sd_setImageWithURL:[NSURL URLWithString:conversation.attributes[@"creatimg"]] placeholderImage:[UIImage imageNamed:@"icon_touxiang"]];
     
@@ -209,6 +193,7 @@
     [self.tabBarItem setBadgeValue:nil];
     MessageListCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     MessageViewController *messageVC = [[MessageViewController alloc] init];
+    cell.redView.hidden = YES;
     messageVC.title = cell.nameL.text;
     messageVC.hidesBottomBarWhenPushed = YES;
     messageVC.conversation = self.conversationArr[indexPath.row];

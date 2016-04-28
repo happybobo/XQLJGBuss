@@ -248,6 +248,6 @@
     </objects>
     <resources>
         <image name="icon_chakan" width="15" height="12"/>
-        <image name="icon_jing" width="16" height="14"/>
+        <image name="icon_jing" width="40" height="40"/>
     </resources>
 </document>

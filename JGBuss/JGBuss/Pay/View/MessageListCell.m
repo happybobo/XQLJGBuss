@@ -11,7 +11,7 @@
 @implementation MessageListCell
 
 - (void)awakeFromNib {
-
+    self.redView.hidden = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
