@@ -127,8 +127,6 @@
 		184092431CAE0C3100735F25 /* QNUploadOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 184092201CAE0C3000735F25 /* QNUploadOption.m */; };
 		184092441CAE0C3100735F25 /* QNUpToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 184092221CAE0C3000735F25 /* QNUpToken.m */; };
 		184092461CAE0DD900735F25 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 184092451CAE0DD900735F25 /* libresolv.tbd */; };
-		184092491CAE59E700735F25 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184092481CAE59E700735F25 /* HistoryViewController.m */; };
-		1840924C1CAE59FE00735F25 /* SavedModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1840924B1CAE59FE00735F25 /* SavedModelController.m */; };
 		184092551CAE66C300735F25 /* HistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 184092541CAE66C300735F25 /* HistoryModel.m */; };
 		1844D4401CBC9D6C005BBFDE /* MessageListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1844D43E1CBC9D6C005BBFDE /* MessageListCell.m */; };
 		1844D4411CBC9D6C005BBFDE /* MessageListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1844D43F1CBC9D6C005BBFDE /* MessageListCell.xib */; };
@@ -140,7 +138,6 @@
 		18478B3D1CA90446006DFF1D /* JGUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18478B3C1CA90446006DFF1D /* JGUser.m */; };
 		18478B3F1CA917F8006DFF1D /* ModuleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18478B3E1CA917F8006DFF1D /* ModuleView.xib */; };
 		18478B421CA92E27006DFF1D /* ModuleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18478B411CA92E27006DFF1D /* ModuleView.m */; };
-		18478B451CAA15FF006DFF1D /* IssuePartJobController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18478B441CAA15FF006DFF1D /* IssuePartJobController.m */; };
 		18478B491CAA21E9006DFF1D /* PickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18478B471CAA21E9006DFF1D /* PickerCell.m */; };
 		18478B4A1CAA21E9006DFF1D /* PickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18478B481CAA21E9006DFF1D /* PickerCell.xib */; };
 		18478B511CAA2A42006DFF1D /* HeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18478B4F1CAA2A42006DFF1D /* HeaderCell.m */; };
@@ -148,7 +145,6 @@
 		18478B561CAA59A0006DFF1D /* JobDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18478B541CAA59A0006DFF1D /* JobDetailCell.m */; };
 		18478B571CAA59A0006DFF1D /* JobDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18478B551CAA59A0006DFF1D /* JobDetailCell.xib */; };
 		18478B5A1CAA5F0E006DFF1D /* BottomBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18478B591CAA5F0E006DFF1D /* BottomBarView.m */; };
-		18478B5E1CAA7374006DFF1D /* IssueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18478B5C1CAA7374006DFF1D /* IssueViewController.m */; };
 		18478B631CAA82C6006DFF1D /* PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18478B611CAA82C6006DFF1D /* PickerView.m */; };
 		18478B641CAA82C6006DFF1D /* PickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18478B621CAA82C6006DFF1D /* PickerView.xib */; };
 		18478B681CAA8EF0006DFF1D /* JobTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18478B661CAA8EF0006DFF1D /* JobTimeCell.m */; };
@@ -166,6 +162,11 @@
 		187C57FD1CC07E1E00394002 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187C57FB1CC07E1E00394002 /* MessageCell.m */; };
 		187C57FE1CC07E1E00394002 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187C57FC1CC07E1E00394002 /* MessageCell.xib */; };
 		187C58011CC09E9600394002 /* JGMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 187C58001CC09E9600394002 /* JGMessage.m */; };
+		1889ADAC1CD2F65F005D9E74 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1889ADA31CD2F65F005D9E74 /* HistoryViewController.m */; };
+		1889ADAD1CD2F65F005D9E74 /* IssuePartJobController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1889ADA51CD2F65F005D9E74 /* IssuePartJobController.m */; };
+		1889ADAE1CD2F65F005D9E74 /* IssueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1889ADA71CD2F65F005D9E74 /* IssueViewController.m */; };
+		1889ADAF1CD2F65F005D9E74 /* JianZhiDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1889ADA91CD2F65F005D9E74 /* JianZhiDetailController.m */; };
+		1889ADB01CD2F65F005D9E74 /* SavedModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1889ADAB1CD2F65F005D9E74 /* SavedModelController.m */; };
 		18948D3C1CB3C83B0067CD27 /* ManageJobsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18948D3B1CB3C83B0067CD27 /* ManageJobsController.m */; };
 		18948D421CB4A9CF0067CD27 /* HistryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18948D401CB4A9CF0067CD27 /* HistryCell.m */; };
 		18948D431CB4A9CF0067CD27 /* HistryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18948D411CB4A9CF0067CD27 /* HistryCell.xib */; };
@@ -197,7 +198,6 @@
 		18FED3061CABC944009C9225 /* PeopCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FED3041CABC944009C9225 /* PeopCountCell.m */; };
 		18FED3071CABC944009C9225 /* PeopCountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18FED3051CABC944009C9225 /* PeopCountCell.xib */; };
 		18FED30A1CABD227009C9225 /* JGHTTPClient+IssuePartJob.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FED3091CABD227009C9225 /* JGHTTPClient+IssuePartJob.m */; };
-		18FED30D1CABE39F009C9225 /* JianZhiDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FED30C1CABE39F009C9225 /* JianZhiDetailController.m */; };
 		18FED3201CABE411009C9225 /* BusinessCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FED30F1CABE411009C9225 /* BusinessCell.m */; };
 		18FED3211CABE411009C9225 /* BusinessCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18FED3101CABE411009C9225 /* BusinessCell.xib */; };
 		18FED3221CABE411009C9225 /* DetailHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FED3121CABE411009C9225 /* DetailHeaderCell.m */; };
@@ -418,10 +418,6 @@
 		184092211CAE0C3000735F25 /* QNUpToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QNUpToken.h; sourceTree = "<group>"; };
 		184092221CAE0C3000735F25 /* QNUpToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QNUpToken.m; sourceTree = "<group>"; };
 		184092451CAE0DD900735F25 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
-		184092471CAE59E700735F25 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryViewController.h; path = ../HistoryViewController.h; sourceTree = "<group>"; };
-		184092481CAE59E700735F25 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryViewController.m; path = ../HistoryViewController.m; sourceTree = "<group>"; };
-		1840924A1CAE59FE00735F25 /* SavedModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SavedModelController.h; path = ../SavedModelController.h; sourceTree = "<group>"; };
-		1840924B1CAE59FE00735F25 /* SavedModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SavedModelController.m; path = ../SavedModelController.m; sourceTree = "<group>"; };
 		184092531CAE66C300735F25 /* HistoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryModel.h; sourceTree = "<group>"; };
 		184092541CAE66C300735F25 /* HistoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryModel.m; sourceTree = "<group>"; };
 		1844D43D1CBC9D6C005BBFDE /* MessageListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListCell.h; sourceTree = "<group>"; };
@@ -441,8 +437,6 @@
 		18478B3E1CA917F8006DFF1D /* ModuleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModuleView.xib; sourceTree = "<group>"; };
 		18478B401CA92E27006DFF1D /* ModuleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleView.h; sourceTree = "<group>"; };
 		18478B411CA92E27006DFF1D /* ModuleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModuleView.m; sourceTree = "<group>"; };
-		18478B431CAA15FF006DFF1D /* IssuePartJobController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IssuePartJobController.h; path = ../IssuePartJobController.h; sourceTree = "<group>"; };
-		18478B441CAA15FF006DFF1D /* IssuePartJobController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IssuePartJobController.m; path = ../IssuePartJobController.m; sourceTree = "<group>"; };
 		18478B461CAA21E9006DFF1D /* PickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerCell.h; sourceTree = "<group>"; };
 		18478B471CAA21E9006DFF1D /* PickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerCell.m; sourceTree = "<group>"; };
 		18478B481CAA21E9006DFF1D /* PickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerCell.xib; sourceTree = "<group>"; };
@@ -454,8 +448,6 @@
 		18478B551CAA59A0006DFF1D /* JobDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobDetailCell.xib; sourceTree = "<group>"; };
 		18478B581CAA5F0E006DFF1D /* BottomBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomBarView.h; sourceTree = "<group>"; };
 		18478B591CAA5F0E006DFF1D /* BottomBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomBarView.m; sourceTree = "<group>"; };
-		18478B5B1CAA7374006DFF1D /* IssueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IssueViewController.h; path = ../IssueViewController.h; sourceTree = "<group>"; };
-		18478B5C1CAA7374006DFF1D /* IssueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IssueViewController.m; path = ../IssueViewController.m; sourceTree = "<group>"; };
 		18478B601CAA82C6006DFF1D /* PickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerView.h; sourceTree = "<group>"; };
 		18478B611CAA82C6006DFF1D /* PickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerView.m; sourceTree = "<group>"; };
 		18478B621CAA82C6006DFF1D /* PickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerView.xib; sourceTree = "<group>"; };
@@ -486,6 +478,16 @@
 		187C57FC1CC07E1E00394002 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		187C57FF1CC09E9600394002 /* JGMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGMessage.h; sourceTree = "<group>"; };
 		187C58001CC09E9600394002 /* JGMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGMessage.m; sourceTree = "<group>"; };
+		1889ADA21CD2F65F005D9E74 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryViewController.h; path = JGBuss/Home/Controller/HistoryViewController.h; sourceTree = SOURCE_ROOT; };
+		1889ADA31CD2F65F005D9E74 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryViewController.m; path = JGBuss/Home/Controller/HistoryViewController.m; sourceTree = SOURCE_ROOT; };
+		1889ADA41CD2F65F005D9E74 /* IssuePartJobController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IssuePartJobController.h; path = JGBuss/Home/Controller/IssuePartJobController.h; sourceTree = SOURCE_ROOT; };
+		1889ADA51CD2F65F005D9E74 /* IssuePartJobController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IssuePartJobController.m; path = JGBuss/Home/Controller/IssuePartJobController.m; sourceTree = SOURCE_ROOT; };
+		1889ADA61CD2F65F005D9E74 /* IssueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IssueViewController.h; path = JGBuss/Home/Controller/IssueViewController.h; sourceTree = SOURCE_ROOT; };
+		1889ADA71CD2F65F005D9E74 /* IssueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IssueViewController.m; path = JGBuss/Home/Controller/IssueViewController.m; sourceTree = SOURCE_ROOT; };
+		1889ADA81CD2F65F005D9E74 /* JianZhiDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JianZhiDetailController.h; path = JGBuss/Home/Controller/JianZhiDetailController.h; sourceTree = SOURCE_ROOT; };
+		1889ADA91CD2F65F005D9E74 /* JianZhiDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JianZhiDetailController.m; path = JGBuss/Home/Controller/JianZhiDetailController.m; sourceTree = SOURCE_ROOT; };
+		1889ADAA1CD2F65F005D9E74 /* SavedModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SavedModelController.h; path = JGBuss/Home/Controller/SavedModelController.h; sourceTree = SOURCE_ROOT; };
+		1889ADAB1CD2F65F005D9E74 /* SavedModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SavedModelController.m; path = JGBuss/Home/Controller/SavedModelController.m; sourceTree = SOURCE_ROOT; };
 		18948D3A1CB3C83B0067CD27 /* ManageJobsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManageJobsController.h; path = ../ManageJobsController.h; sourceTree = "<group>"; };
 		18948D3B1CB3C83B0067CD27 /* ManageJobsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManageJobsController.m; path = ../ManageJobsController.m; sourceTree = "<group>"; };
 		18948D3F1CB4A9CF0067CD27 /* HistryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistryCell.h; sourceTree = "<group>"; };
@@ -538,8 +540,6 @@
 		18FED3051CABC944009C9225 /* PeopCountCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeopCountCell.xib; sourceTree = "<group>"; };
 		18FED3081CABD227009C9225 /* JGHTTPClient+IssuePartJob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JGHTTPClient+IssuePartJob.h"; sourceTree = "<group>"; };
 		18FED3091CABD227009C9225 /* JGHTTPClient+IssuePartJob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JGHTTPClient+IssuePartJob.m"; sourceTree = "<group>"; };
-		18FED30B1CABE39F009C9225 /* JianZhiDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JianZhiDetailController.h; path = ../JianZhiDetailController.h; sourceTree = "<group>"; };
-		18FED30C1CABE39F009C9225 /* JianZhiDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JianZhiDetailController.m; path = ../JianZhiDetailController.m; sourceTree = "<group>"; };
 		18FED30E1CABE411009C9225 /* BusinessCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCell.h; sourceTree = "<group>"; };
 		18FED30F1CABE411009C9225 /* BusinessCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCell.m; sourceTree = "<group>"; };
 		18FED3101CABE411009C9225 /* BusinessCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessCell.xib; sourceTree = "<group>"; };
@@ -1280,16 +1280,16 @@
 		18CF934C1CBFA644007E0AA8 /* 发布兼职 */ = {
 			isa = PBXGroup;
 			children = (
-				18478B5B1CAA7374006DFF1D /* IssueViewController.h */,
-				18478B5C1CAA7374006DFF1D /* IssueViewController.m */,
-				18478B431CAA15FF006DFF1D /* IssuePartJobController.h */,
-				18478B441CAA15FF006DFF1D /* IssuePartJobController.m */,
-				18FED30B1CABE39F009C9225 /* JianZhiDetailController.h */,
-				18FED30C1CABE39F009C9225 /* JianZhiDetailController.m */,
-				184092471CAE59E700735F25 /* HistoryViewController.h */,
-				184092481CAE59E700735F25 /* HistoryViewController.m */,
-				1840924A1CAE59FE00735F25 /* SavedModelController.h */,
-				1840924B1CAE59FE00735F25 /* SavedModelController.m */,
+				1889ADA21CD2F65F005D9E74 /* HistoryViewController.h */,
+				1889ADA31CD2F65F005D9E74 /* HistoryViewController.m */,
+				1889ADA41CD2F65F005D9E74 /* IssuePartJobController.h */,
+				1889ADA51CD2F65F005D9E74 /* IssuePartJobController.m */,
+				1889ADA61CD2F65F005D9E74 /* IssueViewController.h */,
+				1889ADA71CD2F65F005D9E74 /* IssueViewController.m */,
+				1889ADA81CD2F65F005D9E74 /* JianZhiDetailController.h */,
+				1889ADA91CD2F65F005D9E74 /* JianZhiDetailController.m */,
+				1889ADAA1CD2F65F005D9E74 /* SavedModelController.h */,
+				1889ADAB1CD2F65F005D9E74 /* SavedModelController.m */,
 			);
 			path = "发布兼职";
 			sourceTree = "<group>";
@@ -1547,6 +1547,7 @@
 				1817B9C21CA4CF94005D9238 /* NSDate+Addition.m in Sources */,
 				184092391CAE0C3000735F25 /* QNResponseInfo.m in Sources */,
 				18FED3011CABC0D7009C9225 /* JobAddresCell.m in Sources */,
+				1889ADB01CD2F65F005D9E74 /* SavedModelController.m in Sources */,
 				18770DAD1CB4FC3B00CD4466 /* JGHTTPClient+ManageJob.m in Sources */,
 				1844D4401CBC9D6C005BBFDE /* MessageListCell.m in Sources */,
 				18FED3201CABE411009C9225 /* BusinessCell.m in Sources */,
@@ -1584,6 +1585,7 @@
 				1817B9D61CA4D156005D9238 /* MessageViewController.m in Sources */,
 				1817B9C01CA4CF94005D9238 /* DMAlertView.m in Sources */,
 				184092371CAE0C3000735F25 /* QNDns.m in Sources */,
+				1889ADAD1CD2F65F005D9E74 /* IssuePartJobController.m in Sources */,
 				18478B491CAA21E9006DFF1D /* PickerCell.m in Sources */,
 				18770DB61CB60A6E00CD4466 /* DetailListViewController.m in Sources */,
 				18DA7A231CB8E394000587DA /* UIButton+Background.m in Sources */,
@@ -1603,7 +1605,6 @@
 				1844D4471CBCCD57005BBFDE /* JGIMClient.m in Sources */,
 				184092271CAE0C3000735F25 /* QNDnspodEnterprise.m in Sources */,
 				184092421CAE0C3000735F25 /* QNUploadManager.m in Sources */,
-				18478B451CAA15FF006DFF1D /* IssuePartJobController.m in Sources */,
 				1817B9CD1CA4D03B005D9238 /* MineViewController.m in Sources */,
 				184092441CAE0C3100735F25 /* QNUpToken.m in Sources */,
 				18478B3D1CA90446006DFF1D /* JGUser.m in Sources */,
@@ -1611,7 +1612,6 @@
 				184092321CAE0C3000735F25 /* QNEtag.m in Sources */,
 				184092251CAE0C3000735F25 /* QNNetworkInfo.m in Sources */,
 				18478B421CA92E27006DFF1D /* ModuleView.m in Sources */,
-				1840924C1CAE59FE00735F25 /* SavedModelController.m in Sources */,
 				18948D3C1CB3C83B0067CD27 /* ManageJobsController.m in Sources */,
 				180630E91CBDEE20007D64AF /* AlertWageController.m in Sources */,
 				18770DBA1CB60B4900CD4466 /* DetailListCell.m in Sources */,
@@ -1623,12 +1623,14 @@
 				184092361CAE0C3000735F25 /* QNUrlSafeBase64.m in Sources */,
 				1817B98A1CA4CF94005D9238 /* AvatarBrowser.m in Sources */,
 				187C58011CC09E9600394002 /* JGMessage.m in Sources */,
+				1889ADAC1CD2F65F005D9E74 /* HistoryViewController.m in Sources */,
 				18FED3281CABE411009C9225 /* SignUpView.m in Sources */,
-				18FED30D1CABE39F009C9225 /* JianZhiDetailController.m in Sources */,
 				1817B9C61CA4CF94005D9238 /* UIImage+sretchImage.m in Sources */,
 				1840922B1CAE0C3000735F25 /* QNResolver.m in Sources */,
+				1889ADAF1CD2F65F005D9E74 /* JianZhiDetailController.m in Sources */,
 				189F59151CC7858900F45E9B /* ChatCell.m in Sources */,
 				184092351CAE0C3000735F25 /* QNSystem.m in Sources */,
+				1889ADAE1CD2F65F005D9E74 /* IssueViewController.m in Sources */,
 				1844D4441CBC9EA9005BBFDE /* MessageListController.m in Sources */,
 				18770DC11CB63B3B00CD4466 /* IBButton.m in Sources */,
 				18CF95591CBFA751007E0AA8 /* FinancialManageController.m in Sources */,
@@ -1636,7 +1638,6 @@
 				18478B561CAA59A0006DFF1D /* JobDetailCell.m in Sources */,
 				18770DCA1CB6553300CD4466 /* SignModel.m in Sources */,
 				1840922A1CAE0C3000735F25 /* QNHosts.m in Sources */,
-				184092491CAE59E700735F25 /* HistoryViewController.m in Sources */,
 				184092331CAE0C3000735F25 /* QNFile.m in Sources */,
 				184091C51CAD0C9800735F25 /* AreaModel.m in Sources */,
 				184092291CAE0C3000735F25 /* QNHijackingDetectWrapper.m in Sources */,
@@ -1664,7 +1665,6 @@
 				184092241CAE0C3000735F25 /* QNDomain.m in Sources */,
 				189B66BC1CD0D27100AD4FA1 /* UIWindow+Extension.m in Sources */,
 				1817B9D31CA4D109005D9238 /* HomeViewController.m in Sources */,
-				18478B5E1CAA7374006DFF1D /* IssueViewController.m in Sources */,
 				184092231CAE0C3000735F25 /* QNDnsManager.m in Sources */,
 				180630E41CBDE8F4007D64AF /* SureSettleCell.m in Sources */,
 			);
