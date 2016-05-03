@@ -219,8 +219,8 @@
     
     UIButton *chatBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     chatBtn.frame = bgViewChat.bounds;
-    [chatBtn addTarget:self action:@selector(goToChatVC:) forControlEvents:UIControlEventTouchUpInside];
-    [bgViewChat addSubview:chatBtn];
+//    [chatBtn addTarget:self action:@selector(goToChatVC:) forControlEvents:UIControlEventTouchUpInside];
+//    [bgViewChat addSubview:chatBtn];
     
     
     //收藏
@@ -241,8 +241,8 @@
     
     UIButton *collectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     collectBtn.frame = bgViewCol.bounds;
-    [collectBtn addTarget:self action:@selector(collectionThePartJob:) forControlEvents:UIControlEventTouchUpInside];
-    [bgViewCol addSubview:collectBtn];
+//    [collectBtn addTarget:self action:@selector(collectionThePartJob:) forControlEvents:UIControlEventTouchUpInside];
+//    [bgViewCol addSubview:collectBtn];
     
     //我要报名
     UIButton *signUpBtn = [UIButton buttonWithType:UIButtonTypeCustom];

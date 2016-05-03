@@ -141,7 +141,9 @@ typedef NS_ENUM(NSUInteger,TypeAdmitOrFinished)
         [self.tableView.mj_footer endRefreshing];
     }];
 }
-
+-(NSInteger)tableView:(UITableView *)tableView indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 2;
+}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.modelArr.count;

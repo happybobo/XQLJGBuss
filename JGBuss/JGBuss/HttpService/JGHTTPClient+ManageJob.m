@@ -157,6 +157,8 @@
     
     [params setObject:offer forKey:@"offer"];
     
+    [params setObject:alike forKey:@"alike"];
+    
     NSString *Url = [APIURLCOMMON stringByAppendingString:@"T_enroll_Agree_Servlet"];
     
     [[JGHTTPClient sharedManager] POST:Url parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

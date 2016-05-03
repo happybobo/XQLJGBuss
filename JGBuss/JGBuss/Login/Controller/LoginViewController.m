@@ -55,6 +55,7 @@
     JGLog(@"%f",SCREEN_H/568);
     //头部ImageView
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_W, 250*(SCREEN_H/667))];
+    imageView.userInteractionEnabled = YES;
     imageView.image = [UIImage imageNamed:@"bg-chahua"];
     [self.backScrollView addSubview:imageView];
     
@@ -106,7 +107,7 @@
     forgetBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [forgetBtn addTarget:self action:@selector(forgetPassWord:) forControlEvents:UIControlEventTouchUpInside];
     [forgetBtn setTitleColor:LIGHTGRAYTEXT forState:UIControlStateNormal];
-    [phoneAndPassView addSubview:forgetBtn];
+//    [phoneAndPassView addSubview:forgetBtn];
     
     
     //使用”手机验证码登录“的按钮
@@ -116,7 +117,7 @@
     [btnCode setTitle:@"使用手机验证码登录" forState:UIControlStateNormal];
     [btnCode addTarget:self action:@selector(loginByPhoneNumAndCode:) forControlEvents:UIControlEventTouchUpInside];
     btnCode.titleLabel.font = [UIFont systemFontOfSize:12];
-    [self.backScrollView addSubview:btnCode];
+//    [self.backScrollView addSubview:btnCode];
     
     //登录&注册按钮
     
@@ -131,42 +132,42 @@
     [self.backScrollView addSubview:loginBtn];
     self.loginBtn = loginBtn;
     
-    UIButton *registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    registerBtn.layer.masksToBounds = YES;
-    [registerBtn setTitleColor:WHITECOLOR forState:UIControlStateNormal];
-    registerBtn.layer.cornerRadius = 20;
-    registerBtn.frame = CGRectMake(30, loginBtn.bottom+10, SCREEN_W-60, 40);
-    [registerBtn addTarget:self action:@selector(gotoRegisterVC:) forControlEvents:UIControlEventTouchUpInside];
-    [registerBtn setTitle:@"注册" forState:UIControlStateNormal];
-    [registerBtn setBackgroundColor:RGBCOLOR(192, 192, 192)];
-    [self.backScrollView addSubview:registerBtn];
+//    UIButton *registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    registerBtn.layer.masksToBounds = YES;
+//    [registerBtn setTitleColor:WHITECOLOR forState:UIControlStateNormal];
+//    registerBtn.layer.cornerRadius = 20;
+//    registerBtn.frame = CGRectMake(30, loginBtn.bottom+10, SCREEN_W-60, 40);
+//    [registerBtn addTarget:self action:@selector(gotoRegisterVC:) forControlEvents:UIControlEventTouchUpInside];
+//    [registerBtn setTitle:@"注册" forState:UIControlStateNormal];
+//    [registerBtn setBackgroundColor:RGBCOLOR(192, 192, 192)];
+//    [self.backScrollView addSubview:registerBtn];
     
     
     //第三方登录
-    UIView *thirdloginView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_H-120, SCREEN_W, 120)];
-    thirdloginView.backgroundColor = BACKCOLORGRAY;
-    [self.backScrollView addSubview:thirdloginView];
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, SCREEN_W, 30)];
-    label.text = @"使用其它账号登录";
-    label.textColor = LIGHTGRAYTEXT;
-    label.font = [UIFont systemFontOfSize:12];
-    label.textAlignment = NSTextAlignmentCenter;
-    [thirdloginView addSubview:label];
-    
-    
-    
-    UIButton *wxbtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    wxbtn.frame = CGRectMake(thirdloginView.center.x-45, label.bottom, 35, 35);
-    [wxbtn setBackgroundImage:[UIImage imageNamed:@"icon-weixin"] forState:UIControlStateNormal];
-    [wxbtn addTarget:self action:@selector(loginToAppByWX) forControlEvents:UIControlEventTouchUpInside];
-    [thirdloginView addSubview:wxbtn];
-    
-    UIButton *qqbtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [qqbtn setBackgroundImage:[UIImage imageNamed:@"icon-qq"] forState:UIControlStateNormal];
-    qqbtn.frame = CGRectMake(thirdloginView.center.x+10, label.bottom, 35, 35);
-    [qqbtn addTarget:self action:@selector(loginToAppByQQ) forControlEvents:UIControlEventTouchUpInside];
-    [thirdloginView addSubview:qqbtn];
+//    UIView *thirdloginView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_H-120, SCREEN_W, 120)];
+//    thirdloginView.backgroundColor = BACKCOLORGRAY;
+////    [self.backScrollView addSubview:thirdloginView];
+//    
+//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, SCREEN_W, 30)];
+//    label.text = @"使用其它账号登录";
+//    label.textColor = LIGHTGRAYTEXT;
+//    label.font = [UIFont systemFontOfSize:12];
+//    label.textAlignment = NSTextAlignmentCenter;
+//    [thirdloginView addSubview:label];
+//    
+//    
+//    
+//    UIButton *wxbtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    wxbtn.frame = CGRectMake(thirdloginView.center.x-45, label.bottom, 35, 35);
+//    [wxbtn setBackgroundImage:[UIImage imageNamed:@"icon-weixin"] forState:UIControlStateNormal];
+//    [wxbtn addTarget:self action:@selector(loginToAppByWX) forControlEvents:UIControlEventTouchUpInside];
+//    [thirdloginView addSubview:wxbtn];
+//    
+//    UIButton *qqbtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [qqbtn setBackgroundImage:[UIImage imageNamed:@"icon-qq"] forState:UIControlStateNormal];
+//    qqbtn.frame = CGRectMake(thirdloginView.center.x+10, label.bottom, 35, 35);
+//    [qqbtn addTarget:self action:@selector(loginToAppByQQ) forControlEvents:UIControlEventTouchUpInside];
+//    [thirdloginView addSubview:qqbtn];
     
     
 }
@@ -186,6 +187,13 @@
         
     }];
 }
+
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.view endEditing:YES];
+    return YES;
+}
 #pragma mark 监听 textFIeld 输入
 -(void)ensureRightInPut:(UITextField *)textField
 {
@@ -196,5 +204,9 @@
     }else{//密码
         
     }
+}
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
 }
 @end

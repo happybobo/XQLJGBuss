@@ -52,6 +52,12 @@
     [NotificationCenter addObserver:self selector:@selector(receiveMessage:) name:kNotificationDidReceiveMessage object:nil];
     [self.view addSubview:self.tableView];
     
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+        [self getMoreMessageFromServerByMessageId];
+        
+    }];
+    
     [self customUI];
     
     [self getMessagesFromServer];
@@ -143,27 +149,29 @@
     return cell;
 }
 
-
-//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    AVIMTextMessage* message = self.messageArr[indexPath.row];
-//    //计算文本所占大小
-//    CGSize size = [message.text boundingRectWithSize:CGSizeMake(180, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15.0]} context:nil].size;
-//    return size.height+50;
-//    
-//}
-//
-//-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    static NSString *identifier = @"MessageCell";
-//    MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-//    if (!cell) {
-//        cell = [[[NSBundle mainBundle]loadNibNamed:@"MessageCell" owner:nil options:nil]lastObject];
-//    }
-//    cell.message = self.messageArr[indexPath.row];
-//    return cell;
-//    
-//}
+/**
+ *  获取当前对话 某条消息之前的消息 ,即历史消息
+ */
+-(void)getMoreMessageFromServerByMessageId
+{
+    [self.conversation queryMessagesBeforeId:self.lastMessage.messageId timestamp:self.lastMessage.sendTimestamp limit:20 callback:^(NSArray *objects, NSError *error) {
+        
+        
+        [self.tableView.mj_header endRefreshing];//结束下拉刷新
+        
+        if (objects.count == 0) {
+            [self showAlertViewWithText:@"没有更多消息记录" duration:1];
+            return ;
+        }
+        
+        NSIndexSet *indexes = [NSIndexSet indexSetWithIndexesInRange:
+                               NSMakeRange(0,[objects count])];
+        [self.messageArr insertObjects:objects atIndexes:indexes];
+        [self.tableView reloadData];
+        self.lastMessage = [objects objectAtIndex:0];
+        
+    }];
+}
 
 //获取一个对话的 最近 消息数组
 -(void)getMessagesFromServer

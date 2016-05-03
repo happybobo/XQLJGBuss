@@ -615,6 +615,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.view endEditing:YES];
     if (indexPath.section == 0) {//选择城市
         if (indexPath.row == 1) {
             PickerView *pickerView = [PickerView aPickerView:^(NSString *city,NSString *Id) {

@@ -1777,7 +1777,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.woniukeji.JGBuss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c231b9b9-7851-4b05-8ed7-26e736882b39";
+				PROVISIONING_PROFILE = "a040d3ae-92a1-4c84-91e4-3c8847e242ee";
 			};
 			name = Debug;
 		};
@@ -1794,7 +1794,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.woniukeji.JGBuss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c231b9b9-7851-4b05-8ed7-26e736882b39";
+				PROVISIONING_PROFILE = "a040d3ae-92a1-4c84-91e4-3c8847e242ee";
 			};
 			name = Release;
 		};

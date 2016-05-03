@@ -241,6 +241,7 @@
         [self showAlertViewWithText:responseObject[@"message"] duration:1];
     } failure:^(NSError *error) {
         JGLog(@"%@",error);
+        [self showAlertViewWithText:NETERROETEXT duration:1];
     }];
 }
 #pragma mark 点击下架
@@ -251,6 +252,7 @@
         [self showAlertViewWithText:responseObject[@"message"] duration:1];
     } failure:^(NSError *error) {
         JGLog(@"%@",error);
+        [self showAlertViewWithText:NETERROETEXT duration:1];
     }];
 }
 /**

@@ -32,6 +32,7 @@
     static JGHTTPClient *manager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
+        
         manager = [[self alloc] initWithBaseURL:[NSURL URLWithString:@""]];
     });
     return manager;

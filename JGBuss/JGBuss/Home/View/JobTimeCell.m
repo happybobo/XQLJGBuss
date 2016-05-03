@@ -36,6 +36,7 @@
     // Configure the view for the selected state
 }
 - (IBAction)selectStartTime:(UIButton *)sender {
+    [APPLICATION.keyWindow endEditing:YES];
     if ([self.nameL.text isEqualToString:@"工作日期"]) {
         TimePickerView *timePicker = [TimePickerView aTimePickerViewWithBlock:^(NSDate *date) {
             NSString *timeString = [self.formatter stringFromDate:date];
@@ -60,7 +61,7 @@
     
 }
 - (IBAction)selectEndTime:(UIButton *)sender {
-    
+    [APPLICATION.keyWindow endEditing:YES];
     if ([self.nameL.text isEqualToString:@"工作日期"]) {
         TimePickerView *timePicker = [TimePickerView aTimePickerViewWithBlock:^(NSDate *date) {
             

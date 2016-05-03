@@ -40,7 +40,7 @@
     // Configure the view for the selected state
 }
 - (IBAction)selectAddress:(UIButton *)sender {
-    
+    [APPLICATION.keyWindow endEditing:YES];
     PickerView *pickerView = [PickerView aPickerView:^(NSString *city,NSString *Id) {
         self.selectAddTF.text = city;
         self.selectBtn.tag = Id.intValue;
