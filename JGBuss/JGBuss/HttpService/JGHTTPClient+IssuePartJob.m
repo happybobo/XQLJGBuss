@@ -56,8 +56,12 @@
     [params setObject:typeId forKey:@"type_id"];
     [params setObject:merntId forKey:@"merchant_id"];
     [params setObject:tittle forKey:@"name"];
+    if (!iconUrl) {
+        [params setObject:@"http://v3.jianguojob.com/logo.png" forKey:@"name_image"];
+    }else{
+        [params setObject:iconUrl forKey:@"name_image"];
+    }
     
-    [params setObject:iconUrl forKey:@"name_image"];
     [params setObject:startDate forKey:@"start_date"];
     [params setObject:endDate forKey:@"stop_date"];
     [params setObject:address forKey:@"address"];

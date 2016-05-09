@@ -10,6 +10,7 @@
 #import "JGHTTPClient+ManageJob.h"
 #import "DetailListCell.h"
 #import "PartJobSelectView.h"
+#include "LibXL/libxl.h"
 
 //报名状态枚举
 typedef NS_ENUM(NSUInteger,SignUpType)
@@ -20,12 +21,13 @@ typedef NS_ENUM(NSUInteger,SignUpType)
 };
 
 
-@interface DetailListViewController ()<UITableViewDataSource,UITableViewDelegate,ClickCancelBtnDeleagte>
+@interface DetailListViewController ()<UITableViewDataSource,UITableViewDelegate,ClickCancelBtnDeleagte,UIDocumentInteractionControllerDelegate>
 {
     SignUpType TYPE;
     int pageCount;
     PartJobSelectView *selectView;
     UIView *bgView;
+    UIDocumentInteractionController *docuC;
     
 }
 @property (nonatomic,strong) UITableView *tableView;
@@ -96,6 +98,19 @@ typedef NS_ENUM(NSUInteger,SignUpType)
     }];
     [self.tableView.mj_header beginRefreshing];
     [self showANopartJobView];
+    
+    UIButton *exportBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    exportBtn.frame = CGRectMake(0, 0, 50, 30);
+    [exportBtn setTitle:@"导出" forState:UIControlStateNormal];
+    exportBtn.showsTouchWhenHighlighted = YES;
+    [exportBtn addTarget:self action:@selector(exportUserData) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:exportBtn];
+    self.navigationItem.rightBarButtonItem = item;
+    
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 -(void)requestList:(NSString *)count type:(NSString *)type
@@ -255,6 +270,60 @@ typedef NS_ENUM(NSUInteger,SignUpType)
 //    [bgView addSubview:btn];
     [self.view addSubview:bgView];
     bgView.hidden = YES;
+}
+
+-(void)exportUserData
+{
+    if (!self.modelArr.count) {
+        [self showAlertViewWithText:@"没有可导出数据" duration:1];
+        return;
+    }
+    //导出数据
+    
+    BookHandle book = xlCreateBook(); // use xlCreateXMLBook() for working with xlsx files
+    
+    SheetHandle sheet = xlBookAddSheet(book, "Sheet1", NULL);
+    //第一个参数代表插入哪个表，第二个是第几行（默认从0开始），第三个是第几列（默认从0开始）
+    xlSheetWriteStr(sheet, 1, 0, "姓名", 0);
+    xlSheetWriteStr(sheet, 1, 1, "性别", 0);
+    xlSheetWriteStr(sheet, 1, 2, "学校", 0);
+    xlSheetWriteStr(sheet, 1, 3, "电话", 0);
+    
+    
+    for (int i = 0; i < self.modelArr.count; i++) {
+        SignModel *model = self.modelArr[i];
+        NSMutableArray *arr = [NSMutableArray array];
+        [arr addObject:model.name];
+        [arr addObject:model.sex_resume.intValue == 0?@"女":@"男"];
+        [arr addObject:model.school];
+        [arr addObject:model.tel];
+        for (int j=0; j<arr.count; j++) {
+            const char *name_c = [arr[j] cStringUsingEncoding:NSUTF8StringEncoding];
+            xlSheetWriteStr(sheet, i+2, j,name_c, 0);
+        }
+       
+    }
+    
+    NSString *documentPath =
+    [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES) firstObject];
+    
+    NSString *fname = [self.manageModel.name stringByAppendingString:@".xls"];
+    NSString *filename = [documentPath stringByAppendingPathComponent:fname];
+    NSLog(@"filepath--%@",filename);
+    
+    xlBookSave(book, [filename UTF8String]);
+    
+    xlBookRelease(book);
+    
+    
+    docuC = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:filename]];
+    
+    docuC.delegate = self;
+    
+    [docuC presentOptionsMenuFromRect:self.view.bounds inView:self.view animated:YES];
+    
+    [docuC presentPreviewAnimated:YES];
+    
 }
 
 

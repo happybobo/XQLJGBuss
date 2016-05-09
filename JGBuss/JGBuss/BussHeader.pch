@@ -76,6 +76,7 @@ static NSString *kNotificationDidReceiveMessage = @"kNotificationDidReceiveMessa
 static NSString *kNotificationOpenIMClient = @"kNotificationOpenIMClient";
 static NSString *kNotificationSelectCity =  @"kNotificationSelectCity";
 static NSString *kNotificationSelectWorkDate =  @"kNotificationSelectWorkDate";
+static NSString *kNotificationLoginSuccessed =  @"kNotificationLoginSuccessed";
 
 
 #ifdef __OBJC__

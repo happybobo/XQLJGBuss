@@ -21,8 +21,11 @@
 {
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:model.name_image] placeholderImage:[UIImage imageNamed:@"icon_touxiang"]];
     self.partTittleL.text = model.name;
-    
-    self.moneyLabel.text = [NSString stringWithFormat:@"%@ %@",model.money,[NameIdManger getTermNameById:model.term]];
+    if (model.term.intValue == 5||model.term.intValue == 6) {
+        self.moneyLabel.text = [NSString stringWithFormat:@"%@",[NameIdManger getTermNameById:model.term]];
+    }else{
+        self.moneyLabel.text = [NSString stringWithFormat:@"%@%@",model.money,[NameIdManger getTermNameById:model.term]];
+    }
     self.peopleCountL.text = [NSString stringWithFormat:@"%@/%@",model.count,model.sum];
     self.issueTimeL.text = [self getAtimeString:model.start_date];
 #warning 不确定用哪个值

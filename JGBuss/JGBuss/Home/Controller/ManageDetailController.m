@@ -181,14 +181,14 @@
             UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.contentView.backgroundColor = BACKCOLORGRAY;
-            UIButton *exportBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-            [exportBtn setBackgroundColor:WHITECOLOR];
-            exportBtn.frame = CGRectMake(50, 10, SCREEN_W-100, 40);
-            [exportBtn setTitle:@"导出已录取的用户信息" forState:UIControlStateNormal];
-            [exportBtn setTitleColor:LIGHTGRAYTEXT forState:UIControlStateNormal];
-            [exportBtn addTarget:self action:@selector(exportData:) forControlEvents:UIControlEventTouchUpInside];
-            [cell.contentView addSubview:exportBtn];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//            UIButton *exportBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//            [exportBtn setBackgroundColor:WHITECOLOR];
+//            exportBtn.frame = CGRectMake(50, 10, SCREEN_W-100, 40);
+//            [exportBtn setTitle:@"导出已录取的用户信息" forState:UIControlStateNormal];
+//            [exportBtn setTitleColor:LIGHTGRAYTEXT forState:UIControlStateNormal];
+//            [exportBtn addTarget:self action:@selector(exportData:) forControlEvents:UIControlEventTouchUpInside];
+//            [cell.contentView addSubview:exportBtn];
+//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
             break;
         }

@@ -211,11 +211,11 @@
     chatView.image = [UIImage imageNamed:@"icon_liaotian"];
     [bgViewChat addSubview:chatView];
     
-    UILabel *labelChat = [[UILabel alloc] initWithFrame:CGRectMake(0, chatView.bottom, bgViewChat.width, 15)];
-    labelChat.text = @"在线咨询";
-    labelChat.textAlignment = NSTextAlignmentCenter;
-    labelChat.font = FONT(12);
-    [bgViewChat addSubview:labelChat];
+//    UILabel *labelChat = [[UILabel alloc] initWithFrame:CGRectMake(0, chatView.bottom, bgViewChat.width, 15)];
+//    labelChat.text = @"在线咨询";
+//    labelChat.textAlignment = NSTextAlignmentCenter;
+//    labelChat.font = FONT(12);
+//    [bgViewChat addSubview:labelChat];
     
     UIButton *chatBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     chatBtn.frame = bgViewChat.bounds;
@@ -233,11 +233,11 @@
     [bgViewCol addSubview:collectionView];
     self.collectionView = collectionView;
     
-    UILabel *labelCollectin = [[UILabel alloc] initWithFrame:CGRectMake(0, collectionView.bottom, bgViewCol.width, 15)];
-    labelCollectin.text = @"收藏";
-    labelCollectin.textAlignment = NSTextAlignmentCenter;
-    labelCollectin.font = FONT(12);
-    [bgViewCol addSubview:labelCollectin];
+//    UILabel *labelCollectin = [[UILabel alloc] initWithFrame:CGRectMake(0, collectionView.bottom, bgViewCol.width, 15)];
+//    labelCollectin.text = @"收藏";
+//    labelCollectin.textAlignment = NSTextAlignmentCenter;
+//    labelCollectin.font = FONT(12);
+//    [bgViewCol addSubview:labelCollectin];
     
     UIButton *collectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     collectBtn.frame = bgViewCol.bounds;

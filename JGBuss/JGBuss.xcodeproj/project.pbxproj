@@ -128,6 +128,7 @@
 		184092441CAE0C3100735F25 /* QNUpToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 184092221CAE0C3000735F25 /* QNUpToken.m */; };
 		184092461CAE0DD900735F25 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 184092451CAE0DD900735F25 /* libresolv.tbd */; };
 		184092551CAE66C300735F25 /* HistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 184092541CAE66C300735F25 /* HistoryModel.m */; };
+		1843A2F51CDB032D00D06BA7 /* jpush-ios-2.1.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1843A2F31CDB032D00D06BA7 /* jpush-ios-2.1.6.a */; };
 		1844D4401CBC9D6C005BBFDE /* MessageListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1844D43E1CBC9D6C005BBFDE /* MessageListCell.m */; };
 		1844D4411CBC9D6C005BBFDE /* MessageListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1844D43F1CBC9D6C005BBFDE /* MessageListCell.xib */; };
 		1844D4441CBC9EA9005BBFDE /* MessageListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1844D4431CBC9EA9005BBFDE /* MessageListController.m */; };
@@ -149,6 +150,7 @@
 		18478B641CAA82C6006DFF1D /* PickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18478B621CAA82C6006DFF1D /* PickerView.xib */; };
 		18478B681CAA8EF0006DFF1D /* JobTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18478B661CAA8EF0006DFF1D /* JobTimeCell.m */; };
 		18478B691CAA8EF0006DFF1D /* JobTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18478B671CAA8EF0006DFF1D /* JobTimeCell.xib */; };
+		184C96081CD9E81900162867 /* LibXL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 184C96071CD9E81800162867 /* LibXL.framework */; };
 		18770DAD1CB4FC3B00CD4466 /* JGHTTPClient+ManageJob.m in Sources */ = {isa = PBXBuildFile; fileRef = 18770DAC1CB4FC3B00CD4466 /* JGHTTPClient+ManageJob.m */; };
 		18770DB01CB5001400CD4466 /* ManagedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18770DAF1CB5001400CD4466 /* ManagedModel.m */; };
 		18770DB61CB60A6E00CD4466 /* DetailListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18770DB51CB60A6E00CD4466 /* DetailListViewController.m */; };
@@ -189,6 +191,13 @@
 		18DA7A231CB8E394000587DA /* UIButton+Background.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA7A221CB8E394000587DA /* UIButton+Background.m */; };
 		18EB366A1CB35A8A004BD203 /* NameIdManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB36691CB35A8A004BD203 /* NameIdManger.m */; };
 		18F26E751CA8DAE800AD339D /* JGHTTPClient+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F26E741CA8DAE800AD339D /* JGHTTPClient+Login.m */; };
+		18F91DD61CD9ED2500FDB463 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F91DD51CD9ED2500FDB463 /* libz.tbd */; };
+		18F91DD81CD9ED2E00FDB463 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F91DD71CD9ED2E00FDB463 /* Security.framework */; };
+		18F91DDA1CD9ED3C00FDB463 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F91DD91CD9ED3C00FDB463 /* CoreGraphics.framework */; };
+		18F91DDC1CD9ED5300FDB463 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F91DDB1CD9ED5300FDB463 /* SystemConfiguration.framework */; };
+		18F91DDE1CD9ED6100FDB463 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F91DDD1CD9ED6100FDB463 /* CoreFoundation.framework */; };
+		18F91DE01CD9ED6A00FDB463 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F91DDF1CD9ED6A00FDB463 /* CoreTelephony.framework */; };
+		18F91DE21CD9ED7600FDB463 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F91DE11CD9ED7600FDB463 /* CFNetwork.framework */; };
 		18FED2F71CAB6C65009C9225 /* TimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FED2F51CAB6C65009C9225 /* TimePickerView.m */; };
 		18FED2F81CAB6C65009C9225 /* TimePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18FED2F61CAB6C65009C9225 /* TimePickerView.xib */; };
 		18FED2FB1CAB777E009C9225 /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FED2FA1CAB777E009C9225 /* DatePickerView.m */; };
@@ -420,6 +429,8 @@
 		184092451CAE0DD900735F25 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		184092531CAE66C300735F25 /* HistoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryModel.h; sourceTree = "<group>"; };
 		184092541CAE66C300735F25 /* HistoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryModel.m; sourceTree = "<group>"; };
+		1843A2F31CDB032D00D06BA7 /* jpush-ios-2.1.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.6.a"; sourceTree = "<group>"; };
+		1843A2F41CDB032D00D06BA7 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
 		1844D43D1CBC9D6C005BBFDE /* MessageListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListCell.h; sourceTree = "<group>"; };
 		1844D43E1CBC9D6C005BBFDE /* MessageListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListCell.m; sourceTree = "<group>"; };
 		1844D43F1CBC9D6C005BBFDE /* MessageListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageListCell.xib; sourceTree = "<group>"; };
@@ -454,6 +465,7 @@
 		18478B651CAA8EF0006DFF1D /* JobTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobTimeCell.h; sourceTree = "<group>"; };
 		18478B661CAA8EF0006DFF1D /* JobTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobTimeCell.m; sourceTree = "<group>"; };
 		18478B671CAA8EF0006DFF1D /* JobTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobTimeCell.xib; sourceTree = "<group>"; };
+		184C96071CD9E81800162867 /* LibXL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LibXL.framework; sourceTree = "<group>"; };
 		18770DAB1CB4FC3B00CD4466 /* JGHTTPClient+ManageJob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JGHTTPClient+ManageJob.h"; sourceTree = "<group>"; };
 		18770DAC1CB4FC3B00CD4466 /* JGHTTPClient+ManageJob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JGHTTPClient+ManageJob.m"; sourceTree = "<group>"; };
 		18770DAE1CB5001400CD4466 /* ManagedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagedModel.h; sourceTree = "<group>"; };
@@ -526,6 +538,13 @@
 		18EB36691CB35A8A004BD203 /* NameIdManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameIdManger.m; sourceTree = "<group>"; };
 		18F26E731CA8DAE800AD339D /* JGHTTPClient+Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JGHTTPClient+Login.h"; sourceTree = "<group>"; };
 		18F26E741CA8DAE800AD339D /* JGHTTPClient+Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JGHTTPClient+Login.m"; sourceTree = "<group>"; };
+		18F91DD51CD9ED2500FDB463 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		18F91DD71CD9ED2E00FDB463 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		18F91DD91CD9ED3C00FDB463 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		18F91DDB1CD9ED5300FDB463 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		18F91DDD1CD9ED6100FDB463 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		18F91DDF1CD9ED6A00FDB463 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		18F91DE11CD9ED7600FDB463 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		18FED2F41CAB6C65009C9225 /* TimePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimePickerView.h; sourceTree = "<group>"; };
 		18FED2F51CAB6C65009C9225 /* TimePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimePickerView.m; sourceTree = "<group>"; };
 		18FED2F61CAB6C65009C9225 /* TimePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimePickerView.xib; sourceTree = "<group>"; };
@@ -575,7 +594,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18F91DE21CD9ED7600FDB463 /* CFNetwork.framework in Frameworks */,
+				18F91DE01CD9ED6A00FDB463 /* CoreTelephony.framework in Frameworks */,
+				18F91DDE1CD9ED6100FDB463 /* CoreFoundation.framework in Frameworks */,
+				18F91DDC1CD9ED5300FDB463 /* SystemConfiguration.framework in Frameworks */,
+				18F91DDA1CD9ED3C00FDB463 /* CoreGraphics.framework in Frameworks */,
+				18F91DD81CD9ED2E00FDB463 /* Security.framework in Frameworks */,
+				1843A2F51CDB032D00D06BA7 /* jpush-ios-2.1.6.a in Frameworks */,
+				18F91DD61CD9ED2500FDB463 /* libz.tbd in Frameworks */,
 				184092461CAE0DD900735F25 /* libresolv.tbd in Frameworks */,
+				184C96081CD9E81900162867 /* LibXL.framework in Frameworks */,
 				7279C060C2236C55BB72CAA8 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1166,6 +1194,23 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
+		1843A2F11CDB031C00D06BA7 /* 第三方集成文件 */ = {
+			isa = PBXGroup;
+			children = (
+				1843A2F21CDB032D00D06BA7 /* lib */,
+			);
+			path = "第三方集成文件";
+			sourceTree = "<group>";
+		};
+		1843A2F21CDB032D00D06BA7 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				1843A2F31CDB032D00D06BA7 /* jpush-ios-2.1.6.a */,
+				1843A2F41CDB032D00D06BA7 /* JPUSHService.h */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
 		18478B3A1CA90446006DFF1D /* JGBussUser */ = {
 			isa = PBXGroup;
 			children = (
@@ -1241,6 +1286,7 @@
 		1895B4821CA4CA0900F990D6 /* JGBuss */ = {
 			isa = PBXGroup;
 			children = (
+				1843A2F11CDB031C00D06BA7 /* 第三方集成文件 */,
 				18478B3A1CA90446006DFF1D /* JGBussUser */,
 				1817B9201CA4CCB0005D9238 /* AppDelegate */,
 				1817B92D1CA4CF94005D9238 /* Tools */,
@@ -1334,6 +1380,14 @@
 		E500C5F90A46840367C5B22E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18F91DE11CD9ED7600FDB463 /* CFNetwork.framework */,
+				18F91DDF1CD9ED6A00FDB463 /* CoreTelephony.framework */,
+				18F91DDD1CD9ED6100FDB463 /* CoreFoundation.framework */,
+				18F91DDB1CD9ED5300FDB463 /* SystemConfiguration.framework */,
+				18F91DD91CD9ED3C00FDB463 /* CoreGraphics.framework */,
+				18F91DD71CD9ED2E00FDB463 /* Security.framework */,
+				18F91DD51CD9ED2500FDB463 /* libz.tbd */,
+				184C96071CD9E81800162867 /* LibXL.framework */,
 				184092451CAE0DD900735F25 /* libresolv.tbd */,
 				184091CC1CAE0C3000735F25 /* HappyDNS */,
 				184091E91CAE0C3000735F25 /* QiniuSDK */,
@@ -1770,14 +1824,64 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Xiao Hengdi (AEGEVUDLH4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiao Hengdi (AEGEVUDLH4)";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/JGBUss/BussHeader.pch";
 				INFOPLIST_FILE = JGBuss/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/JGBuss/第三方集成文件/lib",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"AVOSCloud\"",
+					"-l\"AVOSCloudIM\"",
+					"-l\"MJExtension\"",
+					"-l\"MJRefresh\"",
+					"-l\"Masonry\"",
+					"-l\"SDCycleScrollView\"",
+					"-l\"SDWebImage\"",
+					"-l\"SVProgressHUD\"",
+					"-l\"icucore\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-lstdc++",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.woniukeji.JGBuss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a040d3ae-92a1-4c84-91e4-3c8847e242ee";
+				PROVISIONING_PROFILE = "779fcb55-250d-4a48-a19a-157b6c7e6e13";
+				WARNING_LDFLAGS = "";
 			};
 			name = Debug;
 		};
@@ -1787,14 +1891,64 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Xiao Hengdi (AEGEVUDLH4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiao Hengdi (AEGEVUDLH4)";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/JGBUss/BussHeader.pch";
 				INFOPLIST_FILE = JGBuss/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/JGBuss/第三方集成文件/lib",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"AVOSCloud\"",
+					"-l\"AVOSCloudIM\"",
+					"-l\"MJExtension\"",
+					"-l\"MJRefresh\"",
+					"-l\"Masonry\"",
+					"-l\"SDCycleScrollView\"",
+					"-l\"SDWebImage\"",
+					"-l\"SVProgressHUD\"",
+					"-l\"icucore\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-lstdc++",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.woniukeji.JGBuss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a040d3ae-92a1-4c84-91e4-3c8847e242ee";
+				PROVISIONING_PROFILE = "779fcb55-250d-4a48-a19a-157b6c7e6e13";
+				WARNING_LDFLAGS = "";
 			};
 			name = Release;
 		};

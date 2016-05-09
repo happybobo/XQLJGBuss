@@ -16,6 +16,9 @@
 /** 学校 */
 @property (nonatomic, copy) NSString* school;
 
+/** 电话 */
+@property (nonatomic, copy) NSString* tel;
+
 /** 注册时间 */
 @property (nonatomic, copy) NSString* regedit_time;
 

@@ -37,14 +37,14 @@
     navHome.tabBarItem.title = @"兼职中心";
     
     
-    MessageListController *partjobVC = [[MessageListController alloc] init];
-    partjobVC.title = @"消息";
+    MessageListController *messageVC = [[MessageListController alloc] init];
+    messageVC.title = @"消息";
     //设置图标
-    partjobVC.tabBarItem.image = [UIImage imageNamed:@"zh_lt"];
+    messageVC.tabBarItem.image = [UIImage imageNamed:@"zh_lt"];
     //选中图标样式  修改渲染模式
-    partjobVC.tabBarItem.selectedImage = [[UIImage imageNamed:@"xz_lt"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    UINavigationController *navPartjob = [[UINavigationController alloc] initWithRootViewController:partjobVC];
-    navPartjob.tabBarItem.title = @"消息";
+    messageVC.tabBarItem.selectedImage = [[UIImage imageNamed:@"xz_lt"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UINavigationController *navMessageVC = [[UINavigationController alloc] initWithRootViewController:messageVC];
+    navMessageVC.tabBarItem.title = @"消息";
     
     
     MineViewController *mineVC = [[MineViewController alloc] init];
@@ -58,7 +58,7 @@
     
     
     [self addChildViewController:navHome];
-    [self addChildViewController:navPartjob];
+//    [self addChildViewController:navMessageVC];
     [self addChildViewController:navMine];
     
     self.tabBar.tintColor = RGBCOLOR(59, 155, 255);

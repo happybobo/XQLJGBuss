@@ -31,7 +31,7 @@
             self.selectBtn.tag = [Id intValue];
         }];
         pickerView.dataType = TypeOfTerm;
-        pickerView.arrayData = @[@{@"type":@"元/月",@"id":@"0"},@{@"type":@"元/周",@"id":@"1"},@{@"type":@"元/天",@"id":@"2"},@{@"type":@"元/小时",@"id":@"3"},@{@"type":@"元/次",@"id":@"4"},@{@"type":@"义工",@"id":@"5"}];
+        pickerView.arrayData = @[@{@"type":@"元/月",@"id":@"0"},@{@"type":@"元/周",@"id":@"1"},@{@"type":@"元/天",@"id":@"2"},@{@"type":@"元/小时",@"id":@"3"},@{@"type":@"元/次",@"id":@"4"},@{@"type":@"义工",@"id":@"5"},@{@"type":@"面议",@"id":@"6"}];
         [pickerView show];
     }
 }

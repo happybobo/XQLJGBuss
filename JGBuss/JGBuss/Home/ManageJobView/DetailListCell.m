@@ -16,13 +16,18 @@
     __weak IBOutlet NSLayoutConstraint *leftBtnToRightBtn;
     __weak IBOutlet NSLayoutConstraint *statebtntoLeft;
     __weak IBOutlet NSLayoutConstraint *statebtnWidth;
+    UIButton *callTelBtn;
 }
 
 @end
 @implementation DetailListCell
 
 - (void)awakeFromNib {
-    
+    callTelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [callTelBtn setTitleColor:BLUECOLOR forState:UIControlStateNormal];
+    [callTelBtn addTarget:self action:@selector(callTel) forControlEvents:UIControlEventTouchUpInside];
+    callTelBtn.frame = self.remarkL.bounds;
+    [self.remarkL addSubview:callTelBtn];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -64,6 +69,7 @@
     int status = model.user_status.intValue;
     
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:model.name_image] placeholderImage:[UIImage imageNamed:@"icon_touxiang"]];
+    
     if (model.name.length&&![model.name isEqualToString:@"null"]&&![model.name isKindOfClass:[NSNull class]]) {
         self.nameL.text = model.name;
     }
@@ -79,6 +85,7 @@
     if (model.remarks_job.length!=0) {
         self.remarkL.text = model.remarks_job;
     }
+    [callTelBtn setTitle:model.tel forState:UIControlStateNormal];
     self.timeL.text = [model.time_job substringToIndex:16];
 
     switch (status) {
@@ -200,6 +207,20 @@
     leftBtnToRightBtn.constant = 0;
     statebtnWidth.constant = 0;
     statebtntoLeft.constant = -50;
+}
+
+-(void)callTel
+{
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"呼叫" message:self.model.tel preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [APPLICATION openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",self.model.tel]]];
+    }];
+    [alertVC addAction:cancelAction];
+    [alertVC addAction:sureAction];
+    [self.window.rootViewController presentViewController:alertVC animated:YES completion:nil];
 }
 
 @end

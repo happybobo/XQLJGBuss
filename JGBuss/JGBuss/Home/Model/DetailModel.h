@@ -11,6 +11,9 @@
 @interface DetailModel : NSObject
 
 
+/** 工资结算方式 */
+
+@property (nonatomic,copy) NSString *mode;
 /** 兼职id */
 @property (nonatomic, copy) NSString*   id;
 

@@ -43,7 +43,7 @@
     self.togetherAddressL.text = model.set_place;
     self.togetherTimeL.text = model.set_time;
     self.genderLabel.text = [NameIdManger getgenderNameById: model.limit_sex];
-    self.moneyTypeL.text = [self moneyType:model.term];
+    self.moneyTypeL.text = [NameIdManger getModeNameById:model.mode];
     
     if ([model.other isKindOfClass:[NSNull class]]) {
         self.otherLabel.text = model.other;

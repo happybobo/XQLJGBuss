@@ -7,6 +7,8 @@
 //
 
 #import "MineViewController.h"
+#import "LoginViewController.h"
+#import "JPUSHService.h"
 
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -36,12 +38,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+//    self.automaticallyAdjustsScrollViewInsets = NO;
+//    self.edgesForExtendedLayout = UIRectEdgeNone;
     
-    [self.view addSubview:self.tableView];
-    
-//     [self setnavigationBarButton];
+//    [self.view addSubview:self.tableView];
+//    [self setnavigationBarButton];
+    UIButton *logoutBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [logoutBtn setTitle:@"退出登录" forState:UIControlStateNormal];
+    logoutBtn.backgroundColor = YELLOWCOLOR;
+    [logoutBtn addTarget:self action:@selector(logout:) forControlEvents:UIControlEventTouchUpInside];
+    logoutBtn.frame = CGRectMake(50, SCREEN_H/2-25, SCREEN_W-100, 50);
+    [self.view addSubview:logoutBtn];
 }
 /**
  *  设置导航条上的按钮
@@ -86,6 +93,30 @@
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@""];
     return cell;
+}
+
+-(void)logout:(UIButton *)btn
+{
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"确定退出登录?" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAC = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *sureAC = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        AVIMClient *client = [[JGIMClient shareJgIm] getAclient];
+        [client closeWithCallback:^(BOOL succeeded, NSError *error) {
+            
+        }];
+        [[JGIMClient shareJgIm] setNull];
+        
+        [JGUser deleteuser];
+        [JPUSHService setTags:nil alias:@"" fetchCompletionHandle:nil];
+//        [NotificationCenter postNotificationName:kNotificationLogoutSuccessed object:client];
+        //退到登录页面
+        APPLICATION.keyWindow.rootViewController = [[LoginViewController alloc] init];
+
+    }];
+    [alertVC addAction:cancelAC];
+    [alertVC addAction:sureAC];
+    [self presentViewController:alertVC animated:YES completion:nil];
 }
 
 @end

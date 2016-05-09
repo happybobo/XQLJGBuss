@@ -138,7 +138,7 @@
     
     UIButton *iconView = [UIButton buttonWithType:UIButtonTypeCustom];
     iconView.showsTouchWhenHighlighted = YES;
-    [iconView setBackgroundImage:[UIImage imageNamed:@"chatBar_colorMore_photo"] forState:UIControlStateNormal];
+    [iconView setBackgroundImage:[UIImage imageNamed:@"img_logo"] forState:UIControlStateNormal];
     iconView.frame = CGRectMake(bgView.center.x-20, 10, 40, 40);
     iconView.layer.cornerRadius = 20;
     iconView.layer.masksToBounds = YES;
@@ -431,7 +431,7 @@
                     self.genderTF = cell.selectTF;;
                     if (self.model) {
                     
-                        cell.selectTF.text = [NameIdManger getgenderNameById:self.model.limit_sex];
+//                        cell.selectTF.text = [NameIdManger getgenderNameById:self.model.limit_sex];
                         
                     }
                     break;
@@ -443,10 +443,10 @@
                         self.boyContTF = cell.boyCountL;
                         self.girlCountTF = cell.girlCountL;
                         if(self.model){
-                            cell.boyCountL.text = self.model.sum;
-                            if (self.isAlert) {
-                                cell.girlCountL.text = self.model.nv_sum;
-                            }
+//                            cell.boyCountL.text = self.model.sum;
+//                            if (self.isAlert) {
+//                                cell.girlCountL.text = self.model.nv_sum;
+//                            }
                         }
                         return cell;
                     }
@@ -458,7 +458,7 @@
                         cell.peopeleL.hidden = NO;
                         self.peopleCntTF = cell.selectTF;
                         if (self.model) {
-                            cell.selectTF.text = self.model.sum;
+//                            cell.selectTF.text = self.model.sum;
                         }
                         return cell;
                     }
@@ -886,8 +886,6 @@
             return;
         }else if (!self.tittleTf.text.length){[self showAlertViewWithText:@"请填写兼职标题" duration:1];
             return;
-        }else if (!self.iconUrl.length){[self showAlertViewWithText:@"请选择一张兼职图片" duration:1];
-            return;
         }else if (!self.startTimeStamp.length){[self showAlertViewWithText:@"请选择开始工作时间" duration:1];
             return;
         }else if (!self.endTimeStamp.length){[self showAlertViewWithText:@"请选择结束工作时间" duration:1];
@@ -944,8 +942,6 @@
         return;
     }else if (!self.tittleTf.text.length){[self showAlertViewWithText:@"请填写兼职标题" duration:1];
         return;
-    }else if (!self.iconUrl.length){[self showAlertViewWithText:@"请选择一张兼职图片" duration:1];
-        return;
     }else if (!self.startTimeStamp.length){[self showAlertViewWithText:@"请选择开始工作时间" duration:1];
         return;
     }else if (!self.endTimeStamp.length){[self showAlertViewWithText:@"请选择结束工作时间" duration:1];
@@ -986,6 +982,9 @@
         }
         [JGHTTPClient postPartJobInfoBycityId:self.cityId areaId:[NSString stringWithFormat:@"%ld",self.areaBtn.tag] typeId:self.jobId merntId:USER.Id tittle:self.tittleTf.text iconUrl:self.iconUrl startDate:self.startTimeStamp endDate:self.endTimeStamp address:self.jobDetAddTF.text settleType:self.settleId money:self.moneyTypeTF.text term:[NSString stringWithFormat:@"%ld",self.termBtn.tag] gender:self.genderId peopleSum:self.peopleCntTF.text partjobType:self.jobHotId alike:@"0" tel:self.telTF.text startTime:self.startTimeTF.titleLabel.text endTime:self.endTimeTF.titleLabel.text togetherPlace:self.toPlaceTF.text togetherTime:self.toTimeTF.text jobCont:self.jobContTF.text jobReqir:self.jobReqirTF.text jobModel:@"0" Success:^(id responseObject) {
             [self showAlertViewWithText:responseObject[@"message"] duration:1];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            });
         } failure:^(NSError *error) {
             [self showAlertViewWithText:NETERROETEXT duration:1];
         }];
@@ -1022,14 +1021,20 @@
             if (!self.girlCountTF.text.length||[self.girlCountTF.text isEqualToString:@"0"]){[self showAlertViewWithText:@"请填写招募女生人数" duration:1];
                 return;
             }
-            [JGHTTPClient postPartJobInfoBycityId:self.cityId areaId:[NSString stringWithFormat:@"%ld",self.areaBtn.tag] typeId:self.jobId merntId:USER.Id tittle:self.tittleTf.text iconUrl:self.iconUrl startDate:self.startTimeStamp endDate:self.endTimeStamp address:self.jobDetAddTF.text settleType:self.settleId money:self.moneyTypeTF.text term:[NSString stringWithFormat:@"%ld",self.termBtn.tag] gender:[NSString stringWithFormat:@"%@1",self.genderId] peopleSum:self.boyContTF.text partjobType:self.jobHotId alike:alike tel:self.telTF.text startTime:self.startTimeTF.titleLabel.text endTime:self.endTimeTF.titleLabel.text togetherPlace:self.toPlaceTF.text togetherTime:self.toTimeTF.text jobCont:self.jobContTF.text jobReqir:self.jobReqirTF.text jobModel:@"0" Success:^(id responseObject) {
+            [JGHTTPClient postPartJobInfoBycityId:self.cityId areaId:[NSString stringWithFormat:@"%ld",self.areaBtn.tag] typeId:self.jobId merntId:USER.Id tittle:self.tittleTf.text iconUrl:self.iconUrl startDate:self.startTimeStamp endDate:self.endTimeStamp address:self.jobDetAddTF.text settleType:self.settleId money:self.moneyTypeTF.text term:[NSString stringWithFormat:@"%ld",self.termBtn.tag] gender:[NSString stringWithFormat:@"31"] peopleSum:self.boyContTF.text partjobType:self.jobHotId alike:alike tel:self.telTF.text startTime:self.startTimeTF.titleLabel.text endTime:self.endTimeTF.titleLabel.text togetherPlace:self.toPlaceTF.text togetherTime:self.toTimeTF.text jobCont:self.jobContTF.text jobReqir:self.jobReqirTF.text jobModel:@"0" Success:^(id responseObject) {
                 [self showAlertViewWithText:responseObject[@"message"] duration:1];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self.navigationController popToRootViewControllerAnimated:YES];
+                });
             } failure:^(NSError *error) {
                 [self showAlertViewWithText:NETERROETEXT duration:1];
             }];
         }else{
-            [JGHTTPClient postPartJobInfoBycityId:self.cityId areaId:[NSString stringWithFormat:@"%ld",self.areaBtn.tag] typeId:self.jobId merntId:USER.Id tittle:self.tittleTf.text iconUrl:self.iconUrl startDate:self.startTimeStamp endDate:self.endTimeStamp address:self.jobDetAddTF.text settleType:self.settleId money:self.moneyTypeTF.text term:[NSString stringWithFormat:@"%ld",self.termBtn.tag] gender:[NSString stringWithFormat:@"%@0",self.genderId] peopleSum:self.girlCountTF.text partjobType:self.jobHotId alike:alike tel:self.telTF.text startTime:self.startTimeTF.titleLabel.text endTime:self.endTimeTF.titleLabel.text togetherPlace:self.toPlaceTF.text togetherTime:self.toTimeTF.text jobCont:self.jobContTF.text jobReqir:self.jobReqirTF.text jobModel:@"0" Success:^(id responseObject) {
+            [JGHTTPClient postPartJobInfoBycityId:self.cityId areaId:[NSString stringWithFormat:@"%ld",self.areaBtn.tag] typeId:self.jobId merntId:USER.Id tittle:self.tittleTf.text iconUrl:self.iconUrl startDate:self.startTimeStamp endDate:self.endTimeStamp address:self.jobDetAddTF.text settleType:self.settleId money:self.moneyTypeTF.text term:[NSString stringWithFormat:@"%ld",self.termBtn.tag] gender:[NSString stringWithFormat:@"30"] peopleSum:self.girlCountTF.text partjobType:self.jobHotId alike:alike tel:self.telTF.text startTime:self.startTimeTF.titleLabel.text endTime:self.endTimeTF.titleLabel.text togetherPlace:self.toPlaceTF.text togetherTime:self.toTimeTF.text jobCont:self.jobContTF.text jobReqir:self.jobReqirTF.text jobModel:@"0" Success:^(id responseObject) {
                 [self showAlertViewWithText:responseObject[@"message"] duration:1];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self.navigationController popToRootViewControllerAnimated:YES];
+                });
             } failure:^(NSError *error) {
                 [self showAlertViewWithText:NETERROETEXT duration:1];
             }];
@@ -1049,8 +1054,8 @@
     self.detailModel.address = self.jobZoneTF.text;
     self.detailModel.set_place = self.toPlaceTF.text;
     self.detailModel.set_time = self.toTimeTF.text;
-    self.detailModel.limit_sex = self.genderTF.text;
-    self.detailModel.term = [NSString stringWithFormat:@"%ld",self.termBtn.tag];
+    self.detailModel.mode = self.settleId;
+    self.detailModel.limit_sex = self.genderId;
     self.detailModel.other = @"";
     self.detailModel.id = @"1";
     self.detailModel.lon = @"";
@@ -1063,6 +1068,7 @@
     self.mercntModel.post = @"30";
     
     self.jzModel.sum = self.peopleCntTF.text;
+    self.jzModel.term = [NSString stringWithFormat:@"%ld",self.termBtn.tag];
     self.jzModel.count = @"0";
     self.jzModel.money = self.moneyTypeTF.text;
     self.jzModel.name_image = self.iconUrl;
@@ -1079,11 +1085,11 @@
 -(void)setModel:(HistoryModel *)model
 {
     _model = model;
-    if (model.limit_sex.intValue == 31||model.limit_sex.intValue == 30||model.limit_sex.intValue == 3) {
-        self.genderId = model.limit_sex;
-    }else{
-        self.genderId = model.limit_sex;
-    }
+//    if (model.limit_sex.intValue == 31||model.limit_sex.intValue == 30||model.limit_sex.intValue == 3) {
+//        self.genderId = model.limit_sex;
+//    }else{
+//        self.genderId = model.limit_sex;
+//    }
     self.cityId = model.city_id;
     self.areaId = model.area_id;
     self.jobId = model.type_id;
@@ -1133,8 +1139,6 @@
         return;
     }else if (!self.tittleTf.text.length){[self showAlertViewWithText:@"请填写兼职标题" duration:1];
         return;
-    }else if (!self.iconUrl.length){[self showAlertViewWithText:@"请选择一张兼职图片" duration:1];
-        return;
     }else if (!self.startTimeStamp.length){[self showAlertViewWithText:@"请选择开始工作时间" duration:1];
         return;
     }else if (!self.endTimeStamp.length){[self showAlertViewWithText:@"请选择结束工作时间" duration:1];
@@ -1145,7 +1149,7 @@
         return;
     }else if (!self.moneyTypeTF.text.length){[self showAlertViewWithText:@"请填写工资钱数" duration:1];
         return;
-    }else if (self.termBtn.tag != 0&&self.termBtn.tag != 1&&self.termBtn.tag != 2&&self.termBtn.tag != 3&&self.termBtn.tag != 4&&self.termBtn.tag != 5){[self showAlertViewWithText:@"请选择工资计算方式" duration:1];
+    }else if (self.termBtn.tag != 0&&self.termBtn.tag != 1&&self.termBtn.tag != 2&&self.termBtn.tag != 3&&self.termBtn.tag != 4&&self.termBtn.tag != 5&&self.termBtn.tag != 6){[self showAlertViewWithText:@"请选择工资计算方式" duration:1];
         return;
     }else if (!self.genderId.length||!self.genderTF.text.length){
         [self showAlertViewWithText:@"请选择性别限制" duration:1];

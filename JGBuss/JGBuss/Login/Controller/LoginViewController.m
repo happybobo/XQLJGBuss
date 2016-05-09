@@ -180,6 +180,7 @@
         if ([responseObject[@"code"] integerValue] == 200) {
             JGUser *user = [JGUser shareUser];
             [JGUser saveUser:user WithDictionary:responseObject];
+            [NotificationCenter postNotificationName:kNotificationLoginSuccessed object:nil];
             APPLICATION.keyWindow.rootViewController = [[MyTabBarController alloc] init];
         }
         
@@ -209,4 +210,10 @@
 {
     [self.view endEditing:YES];
 }
+
+-(void)dealloc
+{
+    [NotificationCenter removeObserver:self name:kNotificationLoginSuccessed object:nil];
+}
+
 @end

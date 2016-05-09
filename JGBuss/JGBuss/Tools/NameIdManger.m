@@ -114,6 +114,11 @@
             return @"义工";
             
             break;
+        } case 6:{
+            
+            return @"面议";
+            
+            break;
         }
         default:
             return nil;

@@ -40,7 +40,7 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = BACKCOLORGRAY;
-    
+
     self.title = @"历史记录";
     
     [self.view addSubview:self.tableView];
