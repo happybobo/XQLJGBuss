@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "MyTabBarController.h"
 #import "JGHTTPClient+Login.h"
+#import "CoreLaunchCool.h"
 
 @interface LoginViewController ()<UITextFieldDelegate>
 @property (nonatomic,strong) UIScrollView *backScrollView;
@@ -182,6 +183,7 @@
             [JGUser saveUser:user WithDictionary:responseObject];
             [NotificationCenter postNotificationName:kNotificationLoginSuccessed object:nil];
             APPLICATION.keyWindow.rootViewController = [[MyTabBarController alloc] init];
+            [CoreLaunchCool animWithWindow:APPLICATION.keyWindow image:[self ShootmeDidSuccessful]];
         }
         
     } failure:^(NSError *error) {
@@ -210,6 +212,7 @@
 {
     [self.view endEditing:YES];
 }
+
 
 -(void)dealloc
 {

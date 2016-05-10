@@ -9,6 +9,7 @@
 #import "MineViewController.h"
 #import "LoginViewController.h"
 #import "JPUSHService.h"
+#import "CoreLaunchCool.h"
 
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -118,5 +119,7 @@
     [alertVC addAction:sureAC];
     [self presentViewController:alertVC animated:YES completion:nil];
 }
+
+
 
 @end

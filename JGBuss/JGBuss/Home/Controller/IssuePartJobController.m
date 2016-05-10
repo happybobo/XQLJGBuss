@@ -1003,9 +1003,9 @@
             [self showAlertViewWithText:@"保存模板成功" duration:1];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [self.navigationController popViewControllerAnimated:YES];
-                if (self.refreshBlock) {
-                    self.refreshBlock();
-                }
+//                if (self.refreshBlock) {
+//                    self.refreshBlock();
+//                }
             });
         } failure:^(NSError *error) {
             [self showAlertViewWithText:NETERROETEXT duration:1];

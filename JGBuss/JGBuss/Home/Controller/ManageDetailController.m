@@ -63,6 +63,13 @@
         [barView.issueJobBtn setTitle:@"下架" forState:UIControlStateNormal];
         [self.view addSubview:barView];
     }
+
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
     JGSVPROGRESSLOAD(@"加载中...")
     IMP_BLOCK_SELF(ManageDetailController);
@@ -73,7 +80,7 @@
             if ([responseObject[@"code"] integerValue]==200) {
                 
                 block_self.detailModel = [DetailModel mj_objectWithKeyValues:[[responseObject objectForKey:@"data"] objectForKey:@"t_job_info"]];
-               
+                
                 
                 block_self.merchantModel = [MerchantModel mj_objectWithKeyValues:[[responseObject objectForKey:@"data"] objectForKey:@"t_merchant"]];
                 [block_self.tableView reloadData];
@@ -84,12 +91,6 @@
     } failure:^(NSError *error) {
         [SVProgressHUD dismiss];
     }];
-    
-}
-
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

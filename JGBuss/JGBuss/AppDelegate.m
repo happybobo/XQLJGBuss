@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "MobClick.h"
 #import "JPUSHService.h"
 #import "JGHTTPClient.h"
 #import "JGHTTPClient+Login.h"
@@ -15,6 +16,7 @@
 #import <AVOSCloud/AVOSCloud.h>
 //如果使用了实时通信模块，请添加下列导入语句
 #import <AVOSCloudIM/AVOSCloudIM.h>
+#import "CoreLaunchCool.h"
 
 @interface AppDelegate ()
 
@@ -25,6 +27,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    
+    [MobClick startWithAppkey:@"5730644d67e58ea066001f0c" reportPolicy:BATCH channelId:nil];
     //请求推送权限
     // Required
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
@@ -60,6 +64,7 @@
     }];
     [self.window switchRootViewController];
     
+    [CoreLaunchCool animWithWindow:self.window image:nil];
     [self.window makeKeyAndVisible];
     if (USER.tel.length == 11) {
         [self login];

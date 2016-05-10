@@ -89,9 +89,14 @@ typedef NS_ENUM(NSUInteger,TypeAdmitOrFinished)
         
         
     }];
-    [self.tableView.mj_header beginRefreshing];
     [self showANopartJobView];
     
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tableView.mj_header beginRefreshing];
 }
 
 -(void)requestList:(NSString *)count type:(NSString *)type

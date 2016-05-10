@@ -24,6 +24,7 @@
 - (void)showAlertViewWithText:(NSString *)text duration:(NSTimeInterval)duration;
 #pragma 正则匹配手机号
 - (BOOL)checkTelNumber:(NSString*) phoneNum;
-
+//截屏代码
+-(UIImage *)ShootmeDidSuccessful;
 
 @end

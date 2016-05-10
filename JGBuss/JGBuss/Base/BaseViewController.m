@@ -8,6 +8,7 @@
 
 #import "BaseViewController.h"
 #import "DMAlertView.h"
+#import "MobClick.h"
 
 @interface BaseViewController ()<UIGestureRecognizerDelegate>
 {
@@ -41,10 +42,21 @@
     [self.navigationController.navigationBar setBackgroundImage:[[UIImage imageNamed:@"icon-navigationBar"] resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch] forBarMetrics:UIBarMetricsDefault];
 }
 
--(void)viewDidAppear:(BOOL)animated
+/**
+ *  页面即将出现方法
+ */
+-(void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
-    
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:NSStringFromClass([self class])];
+}
+/**
+ *  页面即将消失方法
+ */
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:NSStringFromClass([self class])];
 }
 
 - (void)showErrorViewWithText:(NSString *)text {
@@ -80,6 +92,19 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
     
+}
+//截屏代码
+-(UIImage *)ShootmeDidSuccessful{
+    //首先开启上下文
+    CGSize  imageSize = self.view.bounds.size;
+    UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0.0);
+    //将某个VIew的所有内容渲染到图形的上下文中
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [self.view.layer renderInContext:context];
+    //获得图片
+    UIImage * image = UIGraphicsGetImageFromCurrentImageContext();
+    
+    return image;
 }
 
 @end

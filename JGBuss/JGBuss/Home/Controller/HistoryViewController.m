@@ -57,13 +57,13 @@
         [self requestHistoryList:count];
     }];
     
-    [self.tableView.mj_header beginRefreshing];
 
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.tableView.mj_header beginRefreshing];
 }
 
 -(void)requestHistoryList:(NSString *)count

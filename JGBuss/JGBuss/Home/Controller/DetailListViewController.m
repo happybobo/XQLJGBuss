@@ -191,16 +191,41 @@ typedef NS_ENUM(NSUInteger,SignUpType)
     
     if (self.type.intValue == 0) {//已报名
        
-        if (status == 0) {
-            [self changeStatus:@"2" jobId:self.jobId loginId:model.login_id];
+        if (status == 0) {//暂不录取
+            
+            UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"确定取消?" message:nil preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancelAC = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+            UIAlertAction *sureAC = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self changeStatus:@"2" jobId:self.jobId loginId:model.login_id];
+            }];
+            [alertVC addAction:cancelAC];
+            [alertVC addAction:sureAC];
+            [self presentViewController:alertVC animated:YES completion:nil];
         }
         
     }else if (self.type.intValue == 1){//已录取
         
-        if(status == 3){
-            [self changeStatus:@"2" jobId:self.jobId loginId:model.login_id];
-        }else if (status == 5){
-            [self changeStatus:@"7" jobId:self.jobId loginId:model.login_id];
+        if(status == 3){//在用户确认参加之前取消录取
+            
+            UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"确定取消?" message:nil preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancelAC = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+            UIAlertAction *sureAC = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self changeStatus:@"2" jobId:self.jobId loginId:model.login_id];
+            }];
+            [alertVC addAction:cancelAC];
+            [alertVC addAction:sureAC];
+            [self presentViewController:alertVC animated:YES completion:nil];
+
+        }else if (status == 5){//在用户确认参加之后取消录取
+            
+            UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"确定取消?" message:nil preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancelAC = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+            UIAlertAction *sureAC = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self changeStatus:@"7" jobId:self.jobId loginId:model.login_id];
+            }];
+            [alertVC addAction:cancelAC];
+            [alertVC addAction:sureAC];
+            [self presentViewController:alertVC animated:YES completion:nil];
         }
         
         
@@ -221,7 +246,7 @@ typedef NS_ENUM(NSUInteger,SignUpType)
     
     if (self.type.intValue == 0) {//已报名
         
-        if (status == 0) {
+        if (status == 0) {//确认录取
             [self changeStatus:@"3" jobId:self.jobId loginId:model.login_id];
         }
         
@@ -278,52 +303,61 @@ typedef NS_ENUM(NSUInteger,SignUpType)
         [self showAlertViewWithText:@"没有可导出数据" duration:1];
         return;
     }
-    //导出数据
     
-    BookHandle book = xlCreateBook(); // use xlCreateXMLBook() for working with xlsx files
-    
-    SheetHandle sheet = xlBookAddSheet(book, "Sheet1", NULL);
-    //第一个参数代表插入哪个表，第二个是第几行（默认从0开始），第三个是第几列（默认从0开始）
-    xlSheetWriteStr(sheet, 1, 0, "姓名", 0);
-    xlSheetWriteStr(sheet, 1, 1, "性别", 0);
-    xlSheetWriteStr(sheet, 1, 2, "学校", 0);
-    xlSheetWriteStr(sheet, 1, 3, "电话", 0);
-    
-    
-    for (int i = 0; i < self.modelArr.count; i++) {
-        SignModel *model = self.modelArr[i];
-        NSMutableArray *arr = [NSMutableArray array];
-        [arr addObject:model.name];
-        [arr addObject:model.sex_resume.intValue == 0?@"女":@"男"];
-        [arr addObject:model.school];
-        [arr addObject:model.tel];
-        for (int j=0; j<arr.count; j++) {
-            const char *name_c = [arr[j] cStringUsingEncoding:NSUTF8StringEncoding];
-            xlSheetWriteStr(sheet, i+2, j,name_c, 0);
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"确定导出数据" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAC = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *sureAC = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //导出数据
+        
+        BookHandle book = xlCreateBook(); // use xlCreateXMLBook() for working with xlsx files
+        
+        SheetHandle sheet = xlBookAddSheet(book, "Sheet1", NULL);
+        //第一个参数代表插入哪个表，第二个是第几行（默认从0开始），第三个是第几列（默认从0开始）
+        xlSheetWriteStr(sheet, 1, 0, "姓名", 0);
+        xlSheetWriteStr(sheet, 1, 1, "性别", 0);
+        xlSheetWriteStr(sheet, 1, 2, "学校", 0);
+        xlSheetWriteStr(sheet, 1, 3, "电话", 0);
+        
+        
+        for (int i = 0; i < self.modelArr.count; i++) {
+            SignModel *model = self.modelArr[i];
+            NSMutableArray *arr = [NSMutableArray array];
+            [arr addObject:model.name];
+            [arr addObject:model.sex_resume.intValue == 0?@"女":@"男"];
+            [arr addObject:model.school];
+            [arr addObject:model.tel];
+            for (int j=0; j<arr.count; j++) {
+                const char *name_c = [arr[j] cStringUsingEncoding:NSUTF8StringEncoding];
+                xlSheetWriteStr(sheet, i+2, j,name_c, 0);
+            }
+            
         }
-       
-    }
+        
+        NSString *documentPath =
+        [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES) firstObject];
+        
+        NSString *fname = [self.manageModel.name stringByAppendingString:@".xls"];
+        NSString *filename = [documentPath stringByAppendingPathComponent:fname];
+        NSLog(@"filepath--%@",filename);
+        
+        xlBookSave(book, [filename UTF8String]);
+        
+        xlBookRelease(book);
+        
+        
+        docuC = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:filename]];
+        
+        docuC.delegate = self;
+        
+        [docuC presentOptionsMenuFromRect:self.view.bounds inView:self.view animated:YES];
+        
+        [docuC presentPreviewAnimated:YES];
+
+    }];
     
-    NSString *documentPath =
-    [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES) firstObject];
-    
-    NSString *fname = [self.manageModel.name stringByAppendingString:@".xls"];
-    NSString *filename = [documentPath stringByAppendingPathComponent:fname];
-    NSLog(@"filepath--%@",filename);
-    
-    xlBookSave(book, [filename UTF8String]);
-    
-    xlBookRelease(book);
-    
-    
-    docuC = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:filename]];
-    
-    docuC.delegate = self;
-    
-    [docuC presentOptionsMenuFromRect:self.view.bounds inView:self.view animated:YES];
-    
-    [docuC presentPreviewAnimated:YES];
-    
+    [alertVC addAction:cancelAC];
+    [alertVC addAction:sureAC];
+    [self presentViewController:alertVC animated:YES completion:nil];
 }
 
 

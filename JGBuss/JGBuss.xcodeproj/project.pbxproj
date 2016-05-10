@@ -151,6 +151,10 @@
 		18478B681CAA8EF0006DFF1D /* JobTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18478B661CAA8EF0006DFF1D /* JobTimeCell.m */; };
 		18478B691CAA8EF0006DFF1D /* JobTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18478B671CAA8EF0006DFF1D /* JobTimeCell.xib */; };
 		184C96081CD9E81900162867 /* LibXL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 184C96071CD9E81800162867 /* LibXL.framework */; };
+		18574BF71CE1767800115A62 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F91DD51CD9ED2500FDB463 /* libz.tbd */; };
+		18574BFA1CE1779E00115A62 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18574BF81CE1779E00115A62 /* libMobClickLibrary.a */; };
+		186595171CE041750034FDD2 /* CALayer+Cool.m in Sources */ = {isa = PBXBuildFile; fileRef = 186595141CE041750034FDD2 /* CALayer+Cool.m */; };
+		186595181CE041750034FDD2 /* CoreLaunchCool.m in Sources */ = {isa = PBXBuildFile; fileRef = 186595161CE041750034FDD2 /* CoreLaunchCool.m */; };
 		18770DAD1CB4FC3B00CD4466 /* JGHTTPClient+ManageJob.m in Sources */ = {isa = PBXBuildFile; fileRef = 18770DAC1CB4FC3B00CD4466 /* JGHTTPClient+ManageJob.m */; };
 		18770DB01CB5001400CD4466 /* ManagedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18770DAF1CB5001400CD4466 /* ManagedModel.m */; };
 		18770DB61CB60A6E00CD4466 /* DetailListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18770DB51CB60A6E00CD4466 /* DetailListViewController.m */; };
@@ -191,7 +195,6 @@
 		18DA7A231CB8E394000587DA /* UIButton+Background.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA7A221CB8E394000587DA /* UIButton+Background.m */; };
 		18EB366A1CB35A8A004BD203 /* NameIdManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EB36691CB35A8A004BD203 /* NameIdManger.m */; };
 		18F26E751CA8DAE800AD339D /* JGHTTPClient+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F26E741CA8DAE800AD339D /* JGHTTPClient+Login.m */; };
-		18F91DD61CD9ED2500FDB463 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F91DD51CD9ED2500FDB463 /* libz.tbd */; };
 		18F91DD81CD9ED2E00FDB463 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F91DD71CD9ED2E00FDB463 /* Security.framework */; };
 		18F91DDA1CD9ED3C00FDB463 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F91DD91CD9ED3C00FDB463 /* CoreGraphics.framework */; };
 		18F91DDC1CD9ED5300FDB463 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F91DDB1CD9ED5300FDB463 /* SystemConfiguration.framework */; };
@@ -466,6 +469,12 @@
 		18478B661CAA8EF0006DFF1D /* JobTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobTimeCell.m; sourceTree = "<group>"; };
 		18478B671CAA8EF0006DFF1D /* JobTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobTimeCell.xib; sourceTree = "<group>"; };
 		184C96071CD9E81800162867 /* LibXL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LibXL.framework; sourceTree = "<group>"; };
+		18574BF81CE1779E00115A62 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		18574BF91CE1779E00115A62 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		186595131CE041750034FDD2 /* CALayer+Cool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Cool.h"; sourceTree = "<group>"; };
+		186595141CE041750034FDD2 /* CALayer+Cool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Cool.m"; sourceTree = "<group>"; };
+		186595151CE041750034FDD2 /* CoreLaunchCool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreLaunchCool.h; sourceTree = "<group>"; };
+		186595161CE041750034FDD2 /* CoreLaunchCool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreLaunchCool.m; sourceTree = "<group>"; };
 		18770DAB1CB4FC3B00CD4466 /* JGHTTPClient+ManageJob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JGHTTPClient+ManageJob.h"; sourceTree = "<group>"; };
 		18770DAC1CB4FC3B00CD4466 /* JGHTTPClient+ManageJob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JGHTTPClient+ManageJob.m"; sourceTree = "<group>"; };
 		18770DAE1CB5001400CD4466 /* ManagedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagedModel.h; sourceTree = "<group>"; };
@@ -594,14 +603,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18574BF71CE1767800115A62 /* libz.tbd in Frameworks */,
 				18F91DE21CD9ED7600FDB463 /* CFNetwork.framework in Frameworks */,
 				18F91DE01CD9ED6A00FDB463 /* CoreTelephony.framework in Frameworks */,
+				18574BFA1CE1779E00115A62 /* libMobClickLibrary.a in Frameworks */,
 				18F91DDE1CD9ED6100FDB463 /* CoreFoundation.framework in Frameworks */,
 				18F91DDC1CD9ED5300FDB463 /* SystemConfiguration.framework in Frameworks */,
 				18F91DDA1CD9ED3C00FDB463 /* CoreGraphics.framework in Frameworks */,
 				18F91DD81CD9ED2E00FDB463 /* Security.framework in Frameworks */,
 				1843A2F51CDB032D00D06BA7 /* jpush-ios-2.1.6.a in Frameworks */,
-				18F91DD61CD9ED2500FDB463 /* libz.tbd in Frameworks */,
 				184092461CAE0DD900735F25 /* libresolv.tbd in Frameworks */,
 				184C96081CD9E81900162867 /* LibXL.framework in Frameworks */,
 				7279C060C2236C55BB72CAA8 /* libPods.a in Frameworks */,
@@ -870,6 +880,7 @@
 		1817B92D1CA4CF94005D9238 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				186595121CE041750034FDD2 /* CoreLaunchCool */,
 				18FED2F41CAB6C65009C9225 /* TimePickerView.h */,
 				18FED2F51CAB6C65009C9225 /* TimePickerView.m */,
 				18FED2F61CAB6C65009C9225 /* TimePickerView.xib */,
@@ -1197,6 +1208,7 @@
 		1843A2F11CDB031C00D06BA7 /* 第三方集成文件 */ = {
 			isa = PBXGroup;
 			children = (
+				186595211CE0982D0034FDD2 /* Umeng */,
 				1843A2F21CDB032D00D06BA7 /* lib */,
 			);
 			path = "第三方集成文件";
@@ -1220,6 +1232,26 @@
 				1844D4461CBCCD57005BBFDE /* JGIMClient.m */,
 			);
 			path = JGBussUser;
+			sourceTree = "<group>";
+		};
+		186595121CE041750034FDD2 /* CoreLaunchCool */ = {
+			isa = PBXGroup;
+			children = (
+				186595131CE041750034FDD2 /* CALayer+Cool.h */,
+				186595141CE041750034FDD2 /* CALayer+Cool.m */,
+				186595151CE041750034FDD2 /* CoreLaunchCool.h */,
+				186595161CE041750034FDD2 /* CoreLaunchCool.m */,
+			);
+			path = CoreLaunchCool;
+			sourceTree = "<group>";
+		};
+		186595211CE0982D0034FDD2 /* Umeng */ = {
+			isa = PBXGroup;
+			children = (
+				18574BF81CE1779E00115A62 /* libMobClickLibrary.a */,
+				18574BF91CE1779E00115A62 /* MobClick.h */,
+			);
+			path = Umeng;
 			sourceTree = "<group>";
 		};
 		18948D3D1CB4A9720067CD27 /* ManageJobView */ = {
@@ -1626,6 +1658,7 @@
 				18948D461CB4A9F40067CD27 /* SelectView.m in Sources */,
 				1817B98B1CA4CF94005D9238 /* BCKeyBoard.m in Sources */,
 				184091CB1CAD0D2600735F25 /* PartTypeModel.m in Sources */,
+				186595181CE041750034FDD2 /* CoreLaunchCool.m in Sources */,
 				187C57FD1CC07E1E00394002 /* MessageCell.m in Sources */,
 				18FED2FB1CAB777E009C9225 /* DatePickerView.m in Sources */,
 				184092381CAE0C3000735F25 /* QNHttpManager.m in Sources */,
@@ -1700,6 +1733,7 @@
 				18770DBE1CB60CAE00CD4466 /* PartJobSelectView.m in Sources */,
 				1817B9901CA4CF94005D9238 /* EmojiEmoticons.m in Sources */,
 				1817B9D01CA4D0C3005D9238 /* UIViewExt.m in Sources */,
+				186595171CE041750034FDD2 /* CALayer+Cool.m in Sources */,
 				18FED3321CABE42C009C9225 /* DetailModel.m in Sources */,
 				18948D4A1CB4B02B0067CD27 /* ManageCell.m in Sources */,
 				189F590E1CC76AD300F45E9B /* JGHTTPClient+PayPassWord.m in Sources */,
@@ -1755,7 +1789,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiao Hengdi (AEGEVUDLH4)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1798,7 +1832,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiao Hengdi (AEGEVUDLH4)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1823,6 +1857,7 @@
 			baseConfigurationReference = 1A6556DA3B12098F12EFAFE8 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Xiao Hengdi (AEGEVUDLH4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiao Hengdi (AEGEVUDLH4)";
 				ENABLE_BITCODE = NO;
@@ -1838,6 +1873,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/JGBuss/第三方集成文件/lib",
+					"$(PROJECT_DIR)/JGBuss/第三方集成文件/Umeng",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1890,6 +1926,7 @@
 			baseConfigurationReference = FC6CD9BB2A93D953F70984ED /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Xiao Hengdi (AEGEVUDLH4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiao Hengdi (AEGEVUDLH4)";
 				ENABLE_BITCODE = NO;
@@ -1905,6 +1942,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/JGBuss/第三方集成文件/lib",
+					"$(PROJECT_DIR)/JGBuss/第三方集成文件/Umeng",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
