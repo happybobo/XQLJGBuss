@@ -10,6 +10,7 @@
 #import "PickerView.h"
 #import "CityModel.h"
 #import "UIView+AlertView.h"
+#import "QLAlertView.h"
 @interface JobAddresCell ()
 {
     BOOL isFirstSelectCity;
@@ -27,10 +28,11 @@
 -(void)receiveNoti:(NSNotification *)noti
 {
     NSNumber *num = noti.object;
-    if (num.intValue-1 != self.indexCity&&isFirstSelectCity) {
-        [self showAlertViewWithText:@"请重新选择工作地点" duration:1.5];
-    }
-    isFirstSelectCity = YES;
+//    if (num.intValue-1 != self.indexCity&&isFirstSelectCity) {
+//        [self showAlertViewWithText:@"请重新选择工作地点" duration:1.5];
+//        [QLAlertView showAlertTittle:@"修改城市后要重新选择对应的工作地区!" message:nil];
+//    }
+//    isFirstSelectCity = YES;
     self.indexCity = [num intValue]-1;
 }
 

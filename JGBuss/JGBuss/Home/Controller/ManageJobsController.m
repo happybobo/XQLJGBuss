@@ -169,6 +169,9 @@ typedef NS_ENUM(NSUInteger,TypeAdmitOrFinished)
     ManageDetailController *manageVC =[[ManageDetailController alloc] init];
     manageVC.title = [self.modelArr[indexPath.row] name];
     manageVC.manageModel = self.modelArr[indexPath.row];
+    
+    manageVC.cityModels = self.cityModels;
+    manageVC.jobTypes = self.jobTypes;
     manageVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:manageVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

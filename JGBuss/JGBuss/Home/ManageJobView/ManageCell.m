@@ -28,7 +28,7 @@
     int status = model.status.intValue;
     
     self.tittleL.text = model.name;
-    self.creatorL.text = [@"负责人:" stringByAppendingString:USER.name];
+    self.creatorL.text = [@"负责人:" stringByAppendingString:[NSString stringWithFormat:@"%@",USER.name]];
     
     NSTimeInterval timeStart = model.start_date.longLongValue;
     NSRange range = NSMakeRange(5, 5);

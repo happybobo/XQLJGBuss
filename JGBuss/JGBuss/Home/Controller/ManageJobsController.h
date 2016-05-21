@@ -10,4 +10,8 @@
 
 @interface ManageJobsController : NavigatinViewController
 
+
+@property (nonatomic,strong) NSMutableArray *cityModels;
+
+@property (nonatomic,strong) NSMutableArray *jobTypes;
 @end

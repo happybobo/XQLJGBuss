@@ -27,11 +27,11 @@
     self.title = @"登录";
     self.view.backgroundColor = BACKCOLORGRAY;
     
-    self.backScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_W, SCREEN_H)];
-    self.backScrollView.backgroundColor = RGBCOLOR(241, 241, 241);
-    self.backScrollView.scrollEnabled = NO;
-    self.backScrollView.bounces = YES;
-    [self.view addSubview:self.backScrollView];
+//    self.view = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_W, SCREEN_H)];
+//    self.view.backgroundColor = RGBCOLOR(241, 241, 241);
+//    self.view.scrollEnabled = NO;
+//    self.view.bounces = YES;
+//    [self.view addSubview:self.view];
     
     [self configUI];
     
@@ -58,14 +58,14 @@
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_W, 250*(SCREEN_H/667))];
     imageView.userInteractionEnabled = YES;
     imageView.image = [UIImage imageNamed:@"bg-chahua"];
-    [self.backScrollView addSubview:imageView];
+    [self.view addSubview:imageView];
     
     //手机号和密码输入
     UIView *phoneAndPassView = [[UIView alloc] initWithFrame:CGRectMake(0, imageView.bottom, SCREEN_W, 90)];
     
     phoneAndPassView.backgroundColor = WHITECOLOR;
     
-    [self.backScrollView addSubview:phoneAndPassView];
+    [self.view addSubview:phoneAndPassView];
     
     UIImageView *phoneImg = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 30, 30)];
     phoneImg.image = [UIImage imageNamed:@"icon-photo"];
@@ -74,7 +74,7 @@
     UITextField *phoneTf = [[UITextField alloc] initWithFrame:CGRectMake(phoneImg.right, 5, SCREEN_W-40, 40)];
     phoneTf.placeholder = @"请输入您的手机号";
     phoneTf.delegate = self;
-    phoneTf.keyboardType = UIKeyboardTypeNumberPad;
+    phoneTf.keyboardType = UIKeyboardTypeDefault;
     [phoneTf addTarget:self action:@selector(ensureRightInPut:) forControlEvents:UIControlEventEditingChanged];
     phoneTf.font = [UIFont systemFontOfSize:14];
     [phoneAndPassView addSubview:phoneTf];
@@ -106,7 +106,7 @@
     [forgetBtn setTitle:@"忘记密码？" forState:UIControlStateNormal];
     //    [forgetBtn setTintColor:LIGHTGRAYTEXT];
     forgetBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [forgetBtn addTarget:self action:@selector(forgetPassWord:) forControlEvents:UIControlEventTouchUpInside];
+//    [forgetBtn addTarget:self action:@selector(forgetPassWord:) forControlEvents:UIControlEventTouchUpInside];
     [forgetBtn setTitleColor:LIGHTGRAYTEXT forState:UIControlStateNormal];
 //    [phoneAndPassView addSubview:forgetBtn];
     
@@ -116,9 +116,9 @@
     [btnCode setTitleColor:LIGHTGRAYTEXT forState:UIControlStateNormal];
     btnCode.frame = CGRectMake(SCREEN_W-120, phoneAndPassView.bottom, 120, 50);
     [btnCode setTitle:@"使用手机验证码登录" forState:UIControlStateNormal];
-    [btnCode addTarget:self action:@selector(loginByPhoneNumAndCode:) forControlEvents:UIControlEventTouchUpInside];
+//    [btnCode addTarget:self action:@selector(loginByPhoneNumAndCode:) forControlEvents:UIControlEventTouchUpInside];
     btnCode.titleLabel.font = [UIFont systemFontOfSize:12];
-//    [self.backScrollView addSubview:btnCode];
+//    [self.view addSubview:btnCode];
     
     //登录&注册按钮
     
@@ -130,7 +130,7 @@
     [loginBtn addTarget:self action:@selector(loginByTelNum:) forControlEvents:UIControlEventTouchUpInside];
     [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
     [loginBtn setBackgroundColor:YELLOWCOLOR];
-    [self.backScrollView addSubview:loginBtn];
+    [self.view addSubview:loginBtn];
     self.loginBtn = loginBtn;
     
 //    UIButton *registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -141,13 +141,13 @@
 //    [registerBtn addTarget:self action:@selector(gotoRegisterVC:) forControlEvents:UIControlEventTouchUpInside];
 //    [registerBtn setTitle:@"注册" forState:UIControlStateNormal];
 //    [registerBtn setBackgroundColor:RGBCOLOR(192, 192, 192)];
-//    [self.backScrollView addSubview:registerBtn];
+//    [self.view addSubview:registerBtn];
     
     
     //第三方登录
 //    UIView *thirdloginView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_H-120, SCREEN_W, 120)];
 //    thirdloginView.backgroundColor = BACKCOLORGRAY;
-////    [self.backScrollView addSubview:thirdloginView];
+////    [self.view addSubview:thirdloginView];
 //    
 //    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, SCREEN_W, 30)];
 //    label.text = @"使用其它账号登录";
@@ -175,8 +175,18 @@
 
 -(void)loginByTelNum:(UIButton *)loginBtn
 {
+    if (self.phoneTf.text.length==0||self.phoneTf.text==nil) {
+        [self showAlertViewWithText:@"请输入您的账号" duration:1];
+        return;
+    }
+    if (self.passTf.text.length == 0||self.passTf.text==nil) {
+        [self showAlertViewWithText:@"请输入密码" duration:1];
+        return;
+    }
+    [SVProgressHUD showWithStatus:@"正在登录..." maskType:SVProgressHUDMaskTypeClear];
     [JGHTTPClient loginByPhoneNum:self.phoneTf.text passWord:self.passTf.text MD5:YES Success:^(id responseObject) {
         JGLog(@"%@",responseObject);
+        [SVProgressHUD dismiss];
         
         if ([responseObject[@"code"] integerValue] == 200) {
             JGUser *user = [JGUser shareUser];
@@ -184,10 +194,13 @@
             [NotificationCenter postNotificationName:kNotificationLoginSuccessed object:nil];
             APPLICATION.keyWindow.rootViewController = [[MyTabBarController alloc] init];
             [CoreLaunchCool animWithWindow:APPLICATION.keyWindow image:[self ShootmeDidSuccessful]];
+        }else{
+            [self showAlertViewWithText:responseObject[@"message"] duration:1];
         }
         
     } failure:^(NSError *error) {
-        
+        [SVProgressHUD dismiss];
+        [self showAlertViewWithText:NETERROETEXT duration:1];
     }];
 }
 
@@ -201,8 +214,8 @@
 -(void)ensureRightInPut:(UITextField *)textField
 {
     if(textField == self.phoneTf){
-        if (self.phoneTf.text.length>11) {
-            self.phoneTf.text = [self.phoneTf.text substringToIndex:11];
+        if (self.phoneTf.text.length>20) {
+            self.phoneTf.text = [self.phoneTf.text substringToIndex:20];
         }
     }else{//密码
         

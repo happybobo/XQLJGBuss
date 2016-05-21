@@ -29,11 +29,11 @@
     _manageModel = manageModel;
     if ([manageModel.alike isEqualToString:@"0"]) {
         self.oneBtn.hidden = NO;
-        [self.oneBtn setTitle:[NSString stringWithFormat:@"当前报名情况:%@/%@",manageModel.count,manageModel.sum] forState:UIControlStateNormal];
+        [self.oneBtn setTitle:[NSString stringWithFormat:@"当前报名情况:%@/%@",manageModel.user_count,manageModel.sum] forState:UIControlStateNormal];
     }else{
         self.boyBtn.hidden = NO;
         self.girlBtn.hidden = NO;
-        [self.boyBtn setTitle:[NSString stringWithFormat:@"男生部分:%@/%@",manageModel.count,manageModel.sum] forState:UIControlStateNormal];
+        [self.boyBtn setTitle:[NSString stringWithFormat:@"男生部分:%@/%@",manageModel.user_count,manageModel.sum] forState:UIControlStateNormal];
     }
     self.tittleL.text = manageModel.name;
     self.creatorL.text = [NSString stringWithFormat:@"负责人:%@",manageModel.merchant_id_name];
@@ -51,7 +51,7 @@
 -(void)setDetailModel:(DetailModel *)detailModel
 {
     _detailModel = detailModel;
-    [self.girlBtn setTitle:[NSString stringWithFormat:@"女生部分:%@/%@",detailModel.nv_count,detailModel.nv_sum] forState:UIControlStateNormal];
+    [self.girlBtn setTitle:[NSString stringWithFormat:@"女生部分:%@/%@",detailModel.nv_user_count,detailModel.nv_sum] forState:UIControlStateNormal];
 }
 - (IBAction)clickBoyBtn {
     

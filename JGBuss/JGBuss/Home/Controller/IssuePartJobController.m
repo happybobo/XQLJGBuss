@@ -620,9 +620,17 @@
         if (indexPath.row == 1) {
             PickerView *pickerView = [PickerView aPickerView:^(NSString *city,NSString *Id) {
                 self.issCityTF.text = city;
+                [NotificationCenter postNotificationName:kNotificationSelectCity object:Id];
+                if (![self.cityId isEqualToString:Id]&&self.cityId) {
+                    if (self.areaBtn) {
+                        self.areaBtn.tag=0;
+                    }
+                    if (self.jobZoneTF) {
+                        self.jobZoneTF.text = @"";
+                    }
+                }
                 self.cityId = Id;
                 indexCityId = Id.intValue;
-                [NotificationCenter postNotificationName:kNotificationSelectCity object:Id];
             }];
             pickerView.dataType = TypeOfCity;
             pickerView.arrayData = self.cityModels;
@@ -733,7 +741,7 @@
 {
     
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-    imagePickerController.allowsEditing = NO;//不允许裁剪图片
+    imagePickerController.allowsEditing = YES;//允许裁剪图片
     imagePickerController.delegate = self;
     
     switch (buttonIndex) {
@@ -896,7 +904,7 @@
             return;
         }else if (!self.moneyTypeTF.text.length){[self showAlertViewWithText:@"请填写工资钱数" duration:1];
             return;
-        }else if (self.termBtn.tag != 0&&self.termBtn.tag != 1&&self.termBtn.tag != 2&&self.termBtn.tag != 3&&self.termBtn.tag != 4&&self.termBtn.tag != 5){[self showAlertViewWithText:@"请选择工资计算方式" duration:1];
+        }else if (self.termBtn.tag != 0&&self.termBtn.tag != 1&&self.termBtn.tag != 2&&self.termBtn.tag != 3&&self.termBtn.tag != 4&&self.termBtn.tag != 5&&self.termBtn.tag != 6){[self showAlertViewWithText:@"请选择工资计算方式" duration:1];
             return;
         }else if (!self.genderId.length||!self.genderTF.text.length){[self showAlertViewWithText:@"请选择性别限制" duration:1];
             return;
@@ -952,26 +960,34 @@
         return;
     }else if (!self.moneyTypeTF.text.length){[self showAlertViewWithText:@"请填写工资钱数" duration:1];
         return;
-    }else if (self.termBtn.tag != 0&&self.termBtn.tag != 1&&self.termBtn.tag != 2&&self.termBtn.tag != 3&&self.termBtn.tag != 4&&self.termBtn.tag != 5){[self showAlertViewWithText:@"请选择工资计算方式" duration:1];
+    }else if (self.termBtn.tag != 0&&self.termBtn.tag != 1&&self.termBtn.tag != 2&&self.termBtn.tag != 3&&self.termBtn.tag != 4&&self.termBtn.tag != 5&&self.termBtn.tag != 6){[self showAlertViewWithText:@"请选择工资计算方式" duration:1];
         return;
     }else if (!self.genderId.length||!self.genderTF.text.length){
         [self showAlertViewWithText:@"请选择性别限制" duration:1];
         return;
-    }else if (!self.jobId.length){[self showAlertViewWithText:@"请选择工作种类" duration:1];
+    }else if (!self.jobId.length){
+        [self showAlertViewWithText:@"请选择工作种类" duration:1];
         return;
-    }else if (self.telTF.text.length!=11){[self showAlertViewWithText:@"请正确输入手机号" duration:1];
+    }else if (self.telTF.text.length!=11){
+        [self showAlertViewWithText:@"请正确输入手机号" duration:1];
         return;
-    }else if (!self.startTimeTF.titleLabel.text.length){[self showAlertViewWithText:@"请选择工作开始时间" duration:1];
+    }else if ([[[self.startTimeTF titleLabel]text] isEqualToString:@"请选择"]){
+        [self showAlertViewWithText:@"请选择工作开始时间" duration:1];
         return;
-    }else if (!self.endTimeTF.titleLabel.text.length){[self showAlertViewWithText:@"请选择工作结束时间" duration:1];
+    }else if ([[[self.endTimeTF titleLabel]text] isEqualToString:@"请选择"]){
+        [self showAlertViewWithText:@"请选择工作结束时间" duration:1];
         return;
-    }else if (!self.toPlaceTF.text.length){[self showAlertViewWithText:@"请填写集合地点" duration:1];
+    }else if (!self.toPlaceTF.text.length){
+        [self showAlertViewWithText:@"请填写集合地点" duration:1];
         return;
-    }else if (!self.toTimeTF.text.length){[self showAlertViewWithText:@"请填写集合时间" duration:1];
+    }else if (!self.toTimeTF.text.length){
+        [self showAlertViewWithText:@"请填写集合时间" duration:1];
         return;
-    }else if (!self.jobContTF.text.length){[self showAlertViewWithText:@"请填写工作内容" duration:1];
+    }else if (!self.jobContTF.text.length){
+        [self showAlertViewWithText:@"请填写工作内容" duration:1];
         return;
-    }else if (!self.jobReqirTF.text.length){[self showAlertViewWithText:@"请填写工作要求" duration:1];
+    }else if (!self.jobReqirTF.text.length){
+        [self showAlertViewWithText:@"请填写工作要求" duration:1];
         return;
     }
     
@@ -999,7 +1015,7 @@
 -(void)postGenderLimitInfo:(NSString *)alike
 {
     if (!alike) {//保存模板
-        [JGHTTPClient postPartJobInfoBycityId:self.cityId areaId:[NSString stringWithFormat:@"%ld",self.areaBtn.tag] typeId:self.jobId merntId:USER.Id tittle:self.tittleTf.text iconUrl:self.iconUrl startDate:self.startTimeStamp endDate:self.endTimeStamp address:self.jobDetAddTF.text settleType:self.settleId money:self.moneyTypeTF.text term:[NSString stringWithFormat:@"%ld",self.termBtn.tag] gender:[NSString stringWithFormat:@"%@",self.genderId] peopleSum:@"0" partjobType:self.jobHotId alike:@"0" tel:self.telTF.text startTime:self.startTimeTF.titleLabel.text endTime:self.endTimeTF.titleLabel.text togetherPlace:self.toPlaceTF.text togetherTime:self.toTimeTF.text jobCont:self.jobContTF.text jobReqir:self.jobReqirTF.text jobModel:self.modelNameTF.text Success:^(id responseObject) {
+        [JGHTTPClient postPartJobInfoBycityId:self.cityId areaId:[NSString stringWithFormat:@"%ld",(long)self.areaBtn.tag] typeId:self.jobId merntId:USER.Id tittle:self.tittleTf.text iconUrl:self.iconUrl startDate:self.startTimeStamp endDate:self.endTimeStamp address:self.jobDetAddTF.text settleType:self.settleId money:self.moneyTypeTF.text term:[NSString stringWithFormat:@"%ld",self.termBtn.tag] gender:[NSString stringWithFormat:@"%@",self.genderId] peopleSum:@"0" partjobType:self.jobHotId alike:@"0" tel:self.telTF.text startTime:self.startTimeTF.titleLabel.text endTime:self.endTimeTF.titleLabel.text togetherPlace:self.toPlaceTF.text togetherTime:self.toTimeTF.text jobCont:self.jobContTF.text jobReqir:self.jobReqirTF.text jobModel:self.modelNameTF.text Success:^(id responseObject) {
             [self showAlertViewWithText:@"保存模板成功" duration:1];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [self.navigationController popViewControllerAnimated:YES];
@@ -1177,10 +1193,11 @@
             [self showAlertViewWithText:@"请填写招募人数" duration:1];
             return;
         }
-        [JGHTTPClient alertJobInfoBycityId:self.cityId areaId:[NSString stringWithFormat:@"%ld",self.areaBtn.tag] typeId:self.jobId merntId:USER.Id tittle:self.tittleTf.text iconUrl:self.iconUrl startDate:self.startTimeStamp endDate:self.endTimeStamp address:self.jobDetAddTF.text settleType:self.settleId money:self.moneyTypeTF.text term:[NSString stringWithFormat:@"%ld",self.termBtn.tag] gender:self.genderId peopleSum:self.peopleCntTF.text partjobType:self.jobHotId alike:self.model.alike tel:self.telTF.text startTime:self.startTimeTF.titleLabel.text endTime:self.endTimeTF.titleLabel.text togetherPlace:self.toPlaceTF.text togetherTime:self.toTimeTF.text jobCont:self.jobContTF.text jobReqir:self.jobReqirTF.text jobId:self.model.id Success:^(id responseObject) {
+        [JGHTTPClient alertJobInfoBycityId:self.cityId areaId:[NSString stringWithFormat:@"%ld",(long)self.areaBtn.tag] typeId:self.jobId merntId:USER.Id tittle:self.tittleTf.text iconUrl:self.iconUrl startDate:self.startTimeStamp endDate:self.endTimeStamp address:self.jobDetAddTF.text settleType:self.settleId money:self.moneyTypeTF.text term:[NSString stringWithFormat:@"%ld",self.termBtn.tag] gender:self.genderId peopleSum:self.peopleCntTF.text partjobType:self.jobHotId alike:self.model.alike tel:self.telTF.text startTime:self.startTimeTF.titleLabel.text endTime:self.endTimeTF.titleLabel.text togetherPlace:self.toPlaceTF.text togetherTime:self.toTimeTF.text jobCont:self.jobContTF.text jobReqir:self.jobReqirTF.text jobId:self.model.id Success:^(id responseObject) {
             [self showAlertViewWithText:responseObject[@"message"] duration:1];
+            
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self.navigationController popViewControllerAnimated:YES];
+                [self.navigationController popToRootViewControllerAnimated:YES];
             });
         } failure:^(NSError *error) {
             [self showAlertViewWithText:NETERROETEXT duration:1];
@@ -1192,13 +1209,19 @@
         if (!self.girlCountTF.text.length||[self.girlCountTF.text isEqualToString:@"0"]){[self showAlertViewWithText:@"请填写招募女生人数" duration:1];
             return;
         }
-        [JGHTTPClient alertJobInfoBycityId:self.cityId areaId:[NSString stringWithFormat:@"%ld",self.areaBtn.tag] typeId:self.jobId merntId:USER.Id tittle:self.tittleTf.text iconUrl:self.iconUrl startDate:self.startTimeStamp endDate:self.endTimeStamp address:self.jobDetAddTF.text settleType:self.settleId money:self.moneyTypeTF.text term:[NSString stringWithFormat:@"%ld",self.termBtn.tag] gender:@"31" peopleSum:self.boyContTF.text partjobType:self.jobHotId alike:self.model.alike tel:self.telTF.text startTime:self.startTimeTF.titleLabel.text endTime:self.endTimeTF.titleLabel.text togetherPlace:self.toPlaceTF.text togetherTime:self.toTimeTF.text jobCont:self.jobContTF.text jobReqir:self.jobReqirTF.text jobId:self.model.id Success:^(id responseObject) {
+        [JGHTTPClient alertJobInfoBycityId:self.cityId areaId:[NSString stringWithFormat:@"%ld",(long)self.areaBtn.tag] typeId:self.jobId merntId:USER.Id tittle:self.tittleTf.text iconUrl:self.iconUrl startDate:self.startTimeStamp endDate:self.endTimeStamp address:self.jobDetAddTF.text settleType:self.settleId money:self.moneyTypeTF.text term:[NSString stringWithFormat:@"%ld",self.termBtn.tag] gender:@"31" peopleSum:self.boyContTF.text partjobType:self.jobHotId alike:self.model.alike tel:self.telTF.text startTime:self.startTimeTF.titleLabel.text endTime:self.endTimeTF.titleLabel.text togetherPlace:self.toPlaceTF.text togetherTime:self.toTimeTF.text jobCont:self.jobContTF.text jobReqir:self.jobReqirTF.text jobId:self.model.id Success:^(id responseObject) {
             [self showAlertViewWithText:responseObject[@"message"] duration:1];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            });
         } failure:^(NSError *error) {
             [self showAlertViewWithText:NETERROETEXT duration:1];
         }];
-        [JGHTTPClient alertJobInfoBycityId:self.cityId areaId:[NSString stringWithFormat:@"%ld",self.areaBtn.tag] typeId:self.jobId merntId:USER.Id tittle:self.tittleTf.text iconUrl:self.iconUrl startDate:self.startTimeStamp endDate:self.endTimeStamp address:self.jobDetAddTF.text settleType:self.settleId money:self.moneyTypeTF.text term:[NSString stringWithFormat:@"%ld",self.termBtn.tag] gender:@"30" peopleSum:self.girlCountTF.text partjobType:self.jobHotId alike:self.model.alike tel:self.telTF.text startTime:self.startTimeTF.titleLabel.text endTime:self.endTimeTF.titleLabel.text togetherPlace:self.toPlaceTF.text togetherTime:self.toTimeTF.text jobCont:self.jobContTF.text jobReqir:self.jobReqirTF.text jobId:self.model.nv_job_id Success:^(id responseObject) {
+        [JGHTTPClient alertJobInfoBycityId:self.cityId areaId:[NSString stringWithFormat:@"%ld",(long)self.areaBtn.tag] typeId:self.jobId merntId:USER.Id tittle:self.tittleTf.text iconUrl:self.iconUrl startDate:self.startTimeStamp endDate:self.endTimeStamp address:self.jobDetAddTF.text settleType:self.settleId money:self.moneyTypeTF.text term:[NSString stringWithFormat:@"%ld",self.termBtn.tag] gender:@"30" peopleSum:self.girlCountTF.text partjobType:self.jobHotId alike:self.model.alike tel:self.telTF.text startTime:self.startTimeTF.titleLabel.text endTime:self.endTimeTF.titleLabel.text togetherPlace:self.toPlaceTF.text togetherTime:self.toTimeTF.text jobCont:self.jobContTF.text jobReqir:self.jobReqirTF.text jobId:self.model.nv_job_id Success:^(id responseObject) {
             [self showAlertViewWithText:responseObject[@"message"] duration:1];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            });
         } failure:^(NSError *error) {
             [self showAlertViewWithText:NETERROETEXT duration:1];
         }];

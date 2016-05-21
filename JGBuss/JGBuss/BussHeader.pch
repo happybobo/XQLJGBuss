@@ -71,6 +71,10 @@ UIEdgeInsets insets = UIEdgeInsetsMake(top, left, bottom, right);\
 //#define APIURLCOMMON @"http://192.168.1.233/JianGuo_Server/"//局域网
 #define APIURLCOMMON @"http://101.200.205.243:8080/"//外网
 
+#ifdef DEBUG
+//这里是debug时的设置代码
+#endif
+
 //通知
 static NSString *kNotificationDidReceiveMessage = @"kNotificationDidReceiveMessage";
 static NSString *kNotificationOpenIMClient = @"kNotificationOpenIMClient";

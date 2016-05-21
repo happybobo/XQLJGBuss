@@ -30,6 +30,7 @@
     UILabel *sumMoneyL;
     int sumMoney;
     int selectCount;
+    BOOL isAllSelected;
 }
 
 @property (nonatomic,strong) UITableView *tableView;
@@ -93,6 +94,9 @@
     selectCountL = bottomView.countL;
     sumMoneyL = bottomView.sumMoneyL;
     bottomView.selectAllBlock = ^(BOOL isSelected){//点击全选按钮
+        
+        isAllSelected = isSelected;
+
         if(isSelected){//全选状态
             JGLog(@"====%d",isSelected);
             sumMoney = 0;
@@ -221,7 +225,6 @@
     
     [self.view addSubview:bottomView];
     
-    [self requestListBycount:@"0"];
     
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
 //        pageCount = 0;
@@ -238,6 +241,13 @@
     [self.tableView.mj_header beginRefreshing];
     
     
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self requestListBycount:@"0"];
 }
 
 -(void)requestListBycount:(NSString *)count
@@ -342,11 +352,32 @@
     UIAlertAction *otherAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         NSArray *array = [moneyL.text componentsSeparatedByString:@"元"];
         if (alertTextView.text.length&&alertTextView.text.intValue!=0) {
+            
+            CGSize size = [[NSString stringWithFormat:@"%@元%@",alertTextView.text,[array lastObject]] boundingRectWithSize:CGSizeMake(200, 20) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:FONT(12)} context:nil].size;
+            moneyL.frame = CGRectMake(SCREEN_W-size.width-50-(SCREEN_W-alertbtn.left), 5, size.width+50, 20);
+            
             moneyL.text = [NSString stringWithFormat:@"%@元%@",alertTextView.text,[array lastObject]];
             for (PayWageModel *model in self.modelArr) {
                 model.real_money = alertTextView.text;
                 model.hould_money = alertTextView.text;
             }
+            
+            if (isAllSelected) {
+                sumMoney = 0;
+                for (SureSettleCell *cell in self.cellSlectArr) {
+                    cell.selectView.image = [UIImage imageNamed:@"icon_xuanzhongda"];
+                    cell.isSlecting = YES;
+                }
+                for (PayWageModel *model in self.modelArr) {
+                    model.isSelecting = YES;
+                    [self.selectArr addObject:model];
+                    sumMoney += model.real_money.intValue;
+                }
+                selectCount = (int)self.modelArr.count;
+                selectCountL.text = [NSString stringWithFormat:@"选中%d人",selectCount];
+                sumMoneyL.text = [NSString stringWithFormat:@"合计:%d元",sumMoney];
+            }
+
             [self.tableView reloadData];
         }
         
@@ -377,6 +408,22 @@
     alertVC.alertBlock = ^(NSString *realMoney,NSString *remark){
         if (realMoney&&realMoney.intValue != 0) {
             model.real_money = realMoney;
+            if (isAllSelected) {
+                sumMoney = 0;
+                for (SureSettleCell *cell in self.cellSlectArr) {
+                    cell.selectView.image = [UIImage imageNamed:@"icon_xuanzhongda"];
+                    cell.isSlecting = YES;
+                }
+                for (PayWageModel *model in self.modelArr) {
+                    model.isSelecting = YES;
+                    [self.selectArr addObject:model];
+                    sumMoney += model.real_money.intValue;
+                }
+                selectCount = (int)self.modelArr.count;
+                selectCountL.text = [NSString stringWithFormat:@"选中%d人",selectCount];
+                sumMoneyL.text = [NSString stringWithFormat:@"合计:%d元",sumMoney];
+                [self.tableView reloadData];
+            }
         }
         if (remark.length) {
             model.remark = remark;
@@ -414,7 +461,7 @@
     bottomView.backgroundColor = WHITECOLOR;
     [bigView addSubview:bottomView];
     
-    countL = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, SCREEN_W-150, 20)];
+    countL = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, SCREEN_W-200, 20)];
     countL.text = @"总计300人";
     [bottomView addSubview:countL];
     

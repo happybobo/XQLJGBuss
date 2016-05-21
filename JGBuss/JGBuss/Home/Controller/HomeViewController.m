@@ -13,6 +13,10 @@
 #import "ManageJobsController.h"
 #import "IssueViewController.h"
 #import "JGIMClient.h"
+#import "JGHTTPClient+IssuePartJob.h"
+#import "PartTypeModel.h"
+#import "CityModel.h"
+#import "AreaModel.h"
 
 #define INSTANCE 40
 
@@ -22,6 +26,10 @@
 @property (nonatomic,strong) NSMutableArray *dataArr;
 @property (nonatomic,strong) NSMutableArray *cityModelArr;
 @property (nonatomic,strong) UIButton *cityBtn;
+
+@property (nonatomic,strong) NSMutableArray *cityModels;
+@property (nonatomic,strong) NSMutableArray *areaModels;
+@property (nonatomic,strong) NSMutableArray *jobTypes;
 
 @end
 
@@ -57,6 +65,20 @@
     
     //开启聊天客户端
     [self createAIMClient];
+    
+    [JGHTTPClient getAreaInfoByloginId:USER.login_id Success:^(id responseObject) {
+        
+        self.jobTypes = [PartTypeModel mj_objectArrayWithKeyValuesArray:[responseObject[@"data"] objectForKey:@"list_t_type"]];
+        self.cityModels = [CityModel mj_objectArrayWithKeyValuesArray:[responseObject[@"data"] objectForKey:@"list_t_city2"]];
+        CityModel *citymodel = self.cityModels[0];
+        for (AreaModel *model in citymodel.list_t_area) {
+            JGLog(@"%@",model.area_name);
+        }
+        
+    } failure:^(NSError *error) {
+        
+    }];
+
 }
 /**
  *  开启聊天客户端
@@ -150,6 +172,8 @@
 -(void)managePartJob:(UIButton *)btn
 {
     ManageJobsController *manageVC = [[ManageJobsController alloc] init];
+    manageVC.cityModels = self.cityModels;
+    manageVC.jobTypes = self.jobTypes;
     manageVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:manageVC animated:YES];
 }

@@ -151,6 +151,7 @@
 		18478B681CAA8EF0006DFF1D /* JobTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18478B661CAA8EF0006DFF1D /* JobTimeCell.m */; };
 		18478B691CAA8EF0006DFF1D /* JobTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18478B671CAA8EF0006DFF1D /* JobTimeCell.xib */; };
 		184C96081CD9E81900162867 /* LibXL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 184C96071CD9E81800162867 /* LibXL.framework */; };
+		1852D2961CE43D1F00D11F06 /* QLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1852D2951CE43D1F00D11F06 /* QLAlertView.m */; };
 		18574BF71CE1767800115A62 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F91DD51CD9ED2500FDB463 /* libz.tbd */; };
 		18574BFA1CE1779E00115A62 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18574BF81CE1779E00115A62 /* libMobClickLibrary.a */; };
 		186595171CE041750034FDD2 /* CALayer+Cool.m in Sources */ = {isa = PBXBuildFile; fileRef = 186595141CE041750034FDD2 /* CALayer+Cool.m */; };
@@ -469,6 +470,8 @@
 		18478B661CAA8EF0006DFF1D /* JobTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobTimeCell.m; sourceTree = "<group>"; };
 		18478B671CAA8EF0006DFF1D /* JobTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobTimeCell.xib; sourceTree = "<group>"; };
 		184C96071CD9E81800162867 /* LibXL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LibXL.framework; sourceTree = "<group>"; };
+		1852D2941CE43D1F00D11F06 /* QLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QLAlertView.h; sourceTree = "<group>"; };
+		1852D2951CE43D1F00D11F06 /* QLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QLAlertView.m; sourceTree = "<group>"; };
 		18574BF81CE1779E00115A62 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		18574BF91CE1779E00115A62 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		186595131CE041750034FDD2 /* CALayer+Cool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Cool.h"; sourceTree = "<group>"; };
@@ -880,6 +883,8 @@
 		1817B92D1CA4CF94005D9238 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				1852D2941CE43D1F00D11F06 /* QLAlertView.h */,
+				1852D2951CE43D1F00D11F06 /* QLAlertView.m */,
 				186595121CE041750034FDD2 /* CoreLaunchCool */,
 				18FED2F41CAB6C65009C9225 /* TimePickerView.h */,
 				18FED2F51CAB6C65009C9225 /* TimePickerView.m */,
@@ -1736,6 +1741,7 @@
 				186595171CE041750034FDD2 /* CALayer+Cool.m in Sources */,
 				18FED3321CABE42C009C9225 /* DetailModel.m in Sources */,
 				18948D4A1CB4B02B0067CD27 /* ManageCell.m in Sources */,
+				1852D2961CE43D1F00D11F06 /* QLAlertView.m in Sources */,
 				189F590E1CC76AD300F45E9B /* JGHTTPClient+PayPassWord.m in Sources */,
 				18F26E751CA8DAE800AD339D /* JGHTTPClient+Login.m in Sources */,
 				18478B681CAA8EF0006DFF1D /* JobTimeCell.m in Sources */,
@@ -1789,6 +1795,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xiao Hengdi (AEGEVUDLH4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiao Hengdi (AEGEVUDLH4)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1811,6 +1818,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "4364d391-dea4-4673-80da-a16c9e6f3ae3";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1832,6 +1840,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xiao Hengdi (AEGEVUDLH4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiao Hengdi (AEGEVUDLH4)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1847,6 +1856,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "4364d391-dea4-4673-80da-a16c9e6f3ae3";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1916,7 +1926,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.woniukeji.JGBuss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "779fcb55-250d-4a48-a19a-157b6c7e6e13";
+				PROVISIONING_PROFILE = "4364d391-dea4-4673-80da-a16c9e6f3ae3";
 				WARNING_LDFLAGS = "";
 			};
 			name = Debug;
@@ -1985,7 +1995,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.woniukeji.JGBuss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "779fcb55-250d-4a48-a19a-157b6c7e6e13";
+				PROVISIONING_PROFILE = "4364d391-dea4-4673-80da-a16c9e6f3ae3";
 				WARNING_LDFLAGS = "";
 			};
 			name = Release;

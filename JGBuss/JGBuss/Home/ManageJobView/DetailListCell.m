@@ -30,6 +30,15 @@
     [self.remarkL addSubview:callTelBtn];
 }
 
+-(void)prepareForReuse
+{
+    leftBtnToRightBtn.constant = 5;
+    statebtntoLeft.constant = 20;
+    statebtnWidth.constant = 0;
+    self.cancelAdmitBtn.hidden = NO;
+    self.stateBtn.hidden = NO;
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

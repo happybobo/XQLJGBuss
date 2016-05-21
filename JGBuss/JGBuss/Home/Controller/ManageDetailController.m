@@ -17,6 +17,7 @@
 #import "WorkDetailCell.h"
 #import "DetailListViewController.h"
 #import "SettleViewController.h"
+#import "QLAlertView.h"
 
 @interface ManageDetailController ()<UITableViewDataSource,UITableViewDelegate,ClickBottomBtnDelegate,ClickManCountDelegate>
 @property (nonatomic,strong) UITableView *tableView;
@@ -214,46 +215,65 @@
 #pragma mark 点击修改
 -(void)previewAPartJobDetail
 {
-    
-    IssuePartJobController *issueVC = [[IssuePartJobController alloc] init];
-    issueVC.jobId = self.manageModel.id;
-    issueVC.isAlert = YES;
-    
-    [JGHTTPClient getAjobModelByjobId:self.manageModel.id Success:^(id responseObject) {
-        if ([responseObject[@"message"] isEqualToString:@"工作已开始，不能修改该兼职"]) {
-            [self showAlertViewWithText:responseObject[@"message"] duration:1];
-            return ;
-        }
-        HistoryModel *model = [HistoryModel mj_objectWithKeyValues:[responseObject[@"data"] objectForKey:@"t_job"] ];
-        issueVC.model = model;
-        [self.navigationController pushViewController:issueVC animated:YES];
-
-    } failure:^(NSError *error) {
+    [QLAlertView showAlertTittle:@"确定修改?" message:nil compeletBlock:^{
         
-        [self.navigationController pushViewController:issueVC animated:YES];
+        IssuePartJobController *issueVC = [[IssuePartJobController alloc] init];
+        issueVC.jobId = self.manageModel.id;
+        issueVC.isAlert = YES;
+        
+        [JGHTTPClient getAjobModelByjobId:self.manageModel.id Success:^(id responseObject) {
+            if ([responseObject[@"message"] isEqualToString:@"工作已开始，不能修改该兼职"]) {
+                [self showAlertViewWithText:responseObject[@"message"] duration:1];
+                return ;
+            }
+            HistoryModel *model = [HistoryModel mj_objectWithKeyValues:[responseObject[@"data"] objectForKey:@"t_job"] ];
+            issueVC.model = model;
+            issueVC.cityModels = self.cityModels;
+            issueVC.jobTypes = self.jobTypes;
+            [self.navigationController pushViewController:issueVC animated:YES];
+            
+        } failure:^(NSError *error) {
+            [self.navigationController pushViewController:issueVC animated:YES];
+        }];
+        
     }];
+    
 
 }
 #pragma mark 点击结束
 -(void)saveForModule
 {
-    [JGHTTPClient changeJobStausByjobId:self.manageModel.id offer:@"9" alike:self.manageModel.alike Success:^(id responseObject) {
-        JGLog(@"%@",responseObject);
-        [self showAlertViewWithText:responseObject[@"message"] duration:1];
-    } failure:^(NSError *error) {
-        JGLog(@"%@",error);
-        [self showAlertViewWithText:NETERROETEXT duration:1];
+    [QLAlertView showAlertTittle:@"确定结束?" message:nil compeletBlock:^{
+        [JGHTTPClient changeJobStausByjobId:self.manageModel.id offer:@"9" alike:self.manageModel.alike Success:^(id responseObject) {
+            JGLog(@"%@",responseObject);
+            [self showAlertViewWithText:responseObject[@"message"] duration:1];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            });
+        } failure:^(NSError *error) {
+            JGLog(@"%@",error);
+            [self showAlertViewWithText:NETERROETEXT duration:1];
+        }];
     }];
+    
 }
 #pragma mark 点击下架
 -(void)issueAPartJob
 {
-    [JGHTTPClient changeJobStausByjobId:self.manageModel.id offer:@"13" alike:self.manageModel.alike Success:^(id responseObject) {
-        JGLog(@"%@",responseObject);
-        [self showAlertViewWithText:responseObject[@"message"] duration:1];
-    } failure:^(NSError *error) {
-        JGLog(@"%@",error);
-        [self showAlertViewWithText:NETERROETEXT duration:1];
+    [QLAlertView showAlertTittle:@"确定下架?" message:nil compeletBlock:^{
+        [JGHTTPClient changeJobStausByjobId:self.manageModel.id offer:@"13" alike:self.manageModel.alike Success:^(id responseObject) {
+            JGLog(@"%@",responseObject);
+            [self showAlertViewWithText:responseObject[@"message"] duration:1];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            });
+        } failure:^(NSError *error) {
+            JGLog(@"%@",error);
+            [self showAlertViewWithText:NETERROETEXT duration:1];
+        }];
+
     }];
 }
 /**

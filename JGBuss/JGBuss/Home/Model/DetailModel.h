@@ -73,5 +73,7 @@ nv_count*/
 @property (nonatomic,copy) NSString *nv_sum;
 /** 女生部分已招人数 */
 @property (nonatomic,copy) NSString *nv_count;
+/** 女生部分报名人数 */
+@property (nonatomic,copy) NSString *nv_user_count;
 
 @end

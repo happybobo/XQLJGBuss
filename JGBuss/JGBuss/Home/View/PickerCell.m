@@ -27,7 +27,7 @@
     if (self.selectBtn.hidden == NO) {
         
         PickerView *pickerView = [PickerView aPickerView:^(NSString *str,NSString *Id) {
-            self.selectBtn.titleLabel.text = str;
+            [self.selectBtn setTitle:str forState:UIControlStateNormal];
             self.selectBtn.tag = [Id intValue];
         }];
         pickerView.dataType = TypeOfTerm;

@@ -20,9 +20,9 @@
     _model = model;
     
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:model.name_image] placeholderImage:[UIImage imageNamed:@"icon_touxiang"]];
-    if (model.realname.intValue != 0) {
-        self.nameL.text = model.realname;
-    }
+
+    self.nameL.text = model.name;
+
     if (model.tel.intValue != 0) {
         self.telL.text = model.tel;
     }

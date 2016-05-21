@@ -112,8 +112,7 @@
         [JPUSHService setTags:nil alias:@"" fetchCompletionHandle:nil];
 //        [NotificationCenter postNotificationName:kNotificationLogoutSuccessed object:client];
         //退到登录页面
-        APPLICATION.keyWindow.rootViewController = [[LoginViewController alloc] init];
-
+        APPLICATION.keyWindow.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[LoginViewController alloc] init] ];
     }];
     [alertVC addAction:cancelAC];
     [alertVC addAction:sureAC];

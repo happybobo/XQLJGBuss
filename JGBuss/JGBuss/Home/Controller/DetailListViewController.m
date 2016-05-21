@@ -11,6 +11,7 @@
 #import "DetailListCell.h"
 #import "PartJobSelectView.h"
 #include "LibXL/libxl.h"
+#import "QLAlertView.h"
 
 //报名状态枚举
 typedef NS_ENUM(NSUInteger,SignUpType)
@@ -167,11 +168,11 @@ typedef NS_ENUM(NSUInteger,SignUpType)
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    static NSString *identifier = @"DetailListCell";
-//    DetailListCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-//    if (!cell) {
-    DetailListCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"DetailListCell" owner:nil options:nil]lastObject];
-//    }
+    static NSString *identifier = @"DetailListCell";
+    DetailListCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+    cell = [[[NSBundle mainBundle] loadNibNamed:@"DetailListCell" owner:nil options:nil]lastObject];
+    }
     cell.delegate = self;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
@@ -193,39 +194,24 @@ typedef NS_ENUM(NSUInteger,SignUpType)
        
         if (status == 0) {//暂不录取
             
-            UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"确定取消?" message:nil preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *cancelAC = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-            UIAlertAction *sureAC = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [QLAlertView showAlertTittle:@"确定取消?" message:nil compeletBlock:^{
                 [self changeStatus:@"2" jobId:self.jobId loginId:model.login_id];
             }];
-            [alertVC addAction:cancelAC];
-            [alertVC addAction:sureAC];
-            [self presentViewController:alertVC animated:YES completion:nil];
         }
         
     }else if (self.type.intValue == 1){//已录取
         
         if(status == 3){//在用户确认参加之前取消录取
             
-            UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"确定取消?" message:nil preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *cancelAC = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-            UIAlertAction *sureAC = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [QLAlertView showAlertTittle:@"确定取消?" message:nil compeletBlock:^{
                 [self changeStatus:@"2" jobId:self.jobId loginId:model.login_id];
             }];
-            [alertVC addAction:cancelAC];
-            [alertVC addAction:sureAC];
-            [self presentViewController:alertVC animated:YES completion:nil];
 
         }else if (status == 5){//在用户确认参加之后取消录取
             
-            UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"确定取消?" message:nil preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *cancelAC = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-            UIAlertAction *sureAC = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [QLAlertView showAlertTittle:@"确定取消?" message:nil compeletBlock:^{
                 [self changeStatus:@"7" jobId:self.jobId loginId:model.login_id];
             }];
-            [alertVC addAction:cancelAC];
-            [alertVC addAction:sureAC];
-            [self presentViewController:alertVC animated:YES completion:nil];
         }
         
         
@@ -261,12 +247,16 @@ typedef NS_ENUM(NSUInteger,SignUpType)
 /** 改变状态接口 */
 -(void)changeStatus:(NSString *)currentStatus jobId:(NSString *)jobId loginId:(NSString *)loginId
 {
+    [SVProgressHUD showWithStatus:@"正在请求..." maskType:SVProgressHUDMaskTypeClear];
     [JGHTTPClient changeStausByjobId:jobId loginId:loginId offer:currentStatus Success:^(id responseObject) {
         JGLog(@"%@",responseObject);
+        [SVProgressHUD dismiss];
         [self showAlertViewWithText:responseObject[@"message"] duration:1];
         [self requestList:@"0" type:self.type];
     } failure:^(NSError *error) {
         JGLog(@"%@",error);
+        [SVProgressHUD dismiss];
+        [self showAlertViewWithText:NETERROETEXT duration:1];
     }];
 }
 
@@ -303,10 +293,7 @@ typedef NS_ENUM(NSUInteger,SignUpType)
         [self showAlertViewWithText:@"没有可导出数据" duration:1];
         return;
     }
-    
-    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"确定导出数据" message:nil preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancelAC = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-    UIAlertAction *sureAC = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    [QLAlertView showAlertTittle:@"确定导出数据?" message:nil compeletBlock:^{
         //导出数据
         
         BookHandle book = xlCreateBook(); // use xlCreateXMLBook() for working with xlsx files
@@ -352,12 +339,9 @@ typedef NS_ENUM(NSUInteger,SignUpType)
         [docuC presentOptionsMenuFromRect:self.view.bounds inView:self.view animated:YES];
         
         [docuC presentPreviewAnimated:YES];
+        
 
     }];
-    
-    [alertVC addAction:cancelAC];
-    [alertVC addAction:sureAC];
-    [self presentViewController:alertVC animated:YES completion:nil];
 }
 
 

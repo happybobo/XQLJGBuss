@@ -13,4 +13,8 @@
 @interface ManageDetailController : NavigatinViewController
 @property (nonatomic,strong) ManagedModel *manageModel;
 
+
+@property (nonatomic,strong) NSMutableArray *cityModels;
+
+@property (nonatomic,strong) NSMutableArray *jobTypes;
 @end

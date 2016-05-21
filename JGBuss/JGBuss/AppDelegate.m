@@ -28,6 +28,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     
+    [application setApplicationIconBadgeNumber:0];
     [MobClick startWithAppkey:@"5730644d67e58ea066001f0c" reportPolicy:BATCH channelId:nil];
     //请求推送权限
     // Required
@@ -106,7 +107,7 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     [JPUSHService handleRemoteNotification:userInfo];
-    application.applicationIconBadgeNumber = 1;
+    [application setApplicationIconBadgeNumber:0];
     
 }
 
@@ -153,6 +154,7 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     [JPUSHService setBadge:0];
+    [application setApplicationIconBadgeNumber:0];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

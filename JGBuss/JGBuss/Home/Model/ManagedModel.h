@@ -25,6 +25,9 @@
 /** 录取人数 */
 @property (nonatomic, copy) NSString*  count;
 
+/** 报名人数 */
+@property (nonatomic,strong) NSString *user_count;
+
 /** 停止日期 */
 @property (nonatomic, copy) NSString*  stop_date;
 
