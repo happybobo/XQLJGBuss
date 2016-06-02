@@ -6,6 +6,7 @@ pod ‘SDWebImage’
 pod ‘Masonry’
 pod ‘SDCycleScrollView’
 pod 'SVProgressHUD'
+pod 'IQKeyboardManager'
 
 pod 'AVOSCloud'
 pod 'AVOSCloudIM'

@@ -16,6 +16,15 @@
 #import "UnSettleViewController.h"
 #import "AlertWageController.h"
 
+//刷新条件枚举
+typedef NS_ENUM(NSUInteger,ComeFromVCType)
+{
+    ComeFromVCTypeFirst = 1,
+    ComeFromVCTypeAlert= 2,
+    ComeFromVCTypeSettle = 3
+};
+
+
 @interface SettleViewController ()<UITableViewDataSource,UITableViewDelegate,AlertWorkCountDelegate>
 {
     UILabel *tittleL ;
@@ -31,6 +40,7 @@
     int sumMoney;
     int selectCount;
     BOOL isAllSelected;
+    ComeFromVCType fromVCType;
 }
 
 @property (nonatomic,strong) UITableView *tableView;
@@ -39,6 +49,7 @@
 @property (nonatomic,strong) NSMutableArray *jsonArr;
 @property (nonatomic,strong) NSMutableArray *selectArr;
 @property (nonatomic,strong) UITextField *passwordTF;
+@property (nonatomic,assign) BOOL isBackFromAlertVC;
 
 @end
 
@@ -89,6 +100,8 @@
     self.title = @"结算";
     
     [self.view addSubview:self.tableView];
+    
+    fromVCType = ComeFromVCTypeFirst;
     
     BottomSettltView *bottomView = [BottomSettltView aBottomView];
     selectCountL = bottomView.countL;
@@ -150,6 +163,7 @@
             
             if ([self.passwordTF.text isEqualToString:USER.pay_password]) {
                 
+                JGSVPROGRESSLOAD(@"正在结算,请勿离开");
                 
                 for (PayWageModel *model in self.selectArr) {
                     if (!model.remark) {
@@ -173,7 +187,7 @@
                 JGLog(@"%@",jsonStr);
                 IMP_BLOCK_SELF(SettleViewController);
                 [JGHTTPClient PayWageByjsonStr:jsonStr jobId:self.jobId nvJobId:self.nvJobId Success:^(id responseObject) {
-                    
+                    [SVProgressHUD dismiss];
                     [block_self showAlertViewWithText:responseObject[@"message"] duration:1];
                     
                     if ([responseObject[@"code"] intValue] == 200) {
@@ -193,11 +207,14 @@
                             sumMoneyL.text = [NSString stringWithFormat:@"合计:%d元",sumMoney];
                         });
                     }else{
+                        [self showAlertViewWithText:responseObject[@"message"] duration:1.5];
                         return ;
                     }
                     
                     
                 } failure:^(NSError *error) {
+                    
+                    [SVProgressHUD dismiss];
                     [block_self showAlertViewWithText:NETERROETEXT duration:1];
                 }];
                 
@@ -246,8 +263,22 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    [self requestListBycount:@"0"];
+    switch (fromVCType) {
+        case ComeFromVCTypeFirst:
+        case ComeFromVCTypeSettle:{
+            
+            pageCount = 0;
+            [self requestListBycount:@"0"];
+            
+            break;
+        } case ComeFromVCTypeAlert:{
+            
+            
+            
+            break;
+        }
+    }
+
 }
 
 -(void)requestListBycount:(NSString *)count
@@ -399,6 +430,7 @@
  */
 -(void)clickAlertBtn:(UIButton *)sender
 {
+    fromVCType = ComeFromVCTypeAlert;
     SureSettleCell *cell = (SureSettleCell *)[[sender superview] superview];
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     PayWageModel *model = self.modelArr[indexPath.row];
@@ -406,6 +438,7 @@
     AlertWageController *alertVC = [[AlertWageController alloc] init];
     alertVC.model = model;
     alertVC.alertBlock = ^(NSString *realMoney,NSString *remark){
+
         if (realMoney&&realMoney.intValue != 0) {
             model.real_money = realMoney;
             if (isAllSelected) {

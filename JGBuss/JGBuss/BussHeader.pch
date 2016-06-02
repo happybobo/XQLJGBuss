@@ -67,7 +67,7 @@ UIEdgeInsets insets = UIEdgeInsetsMake(top, left, bottom, right);\
 #define NotificationCenter [NSNotificationCenter defaultCenter]
 
 //API 切换
-#define NETERROETEXT @"请检查您的网络设置"
+#define NETERROETEXT @"您的网络不太给力!"
 //#define APIURLCOMMON @"http://192.168.1.233/JianGuo_Server/"//局域网
 #define APIURLCOMMON @"http://101.200.205.243:8080/"//外网
 

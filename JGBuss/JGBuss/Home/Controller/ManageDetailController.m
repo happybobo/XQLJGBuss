@@ -46,6 +46,12 @@
     self.view.backgroundColor = BACKCOLORGRAY;
     [self.view addSubview:self.tableView];
     
+    [self setBottomBar];
+    
+}
+
+-(void)setBottomBar
+{
     if (self.manageModel.status.intValue == 3) {//去结算
         
         UIButton *settleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -64,8 +70,6 @@
         [barView.issueJobBtn setTitle:@"下架" forState:UIControlStateNormal];
         [self.view addSubview:barView];
     }
-
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -247,10 +251,10 @@
         [JGHTTPClient changeJobStausByjobId:self.manageModel.id offer:@"9" alike:self.manageModel.alike Success:^(id responseObject) {
             JGLog(@"%@",responseObject);
             [self showAlertViewWithText:responseObject[@"message"] duration:1];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                
-                [self.navigationController popToRootViewControllerAnimated:YES];
-            });
+            if ([responseObject[@"code"] intValue] == 200) {
+                self.manageModel.status = @"3";
+                [self setBottomBar];
+            }
         } failure:^(NSError *error) {
             JGLog(@"%@",error);
             [self showAlertViewWithText:NETERROETEXT duration:1];

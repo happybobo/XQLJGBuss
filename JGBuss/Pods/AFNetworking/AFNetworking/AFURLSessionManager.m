@@ -710,7 +710,11 @@ static NSString * const AFNSURLSessionTaskDidSuspendNotification = @"com.alamofi
 
     return uploadTask;
 }
-
+/*
+ fromData:(NSData *)bodyData
+ progress:(void (^)(NSProgress *uploadProgress)) uploadProgressBlock
+ completionHandler:(void (^)(NSURLResponse *response, id responseObject, NSError *error))completionHandler
+ */
 - (NSURLSessionUploadTask *)uploadTaskWithRequest:(NSURLRequest *)request
                                          fromData:(NSData *)bodyData
                                          progress:(NSProgress * __autoreleasing *)progress

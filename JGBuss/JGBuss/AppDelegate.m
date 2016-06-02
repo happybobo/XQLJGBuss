@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+//#import "IQKeyboardManager.h"
 #import "MobClick.h"
 #import "JPUSHService.h"
 #import "JGHTTPClient.h"
@@ -27,6 +28,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+//    [IQKeyboardManager sharedManager].enable = YES;
     
     [application setApplicationIconBadgeNumber:0];
     [MobClick startWithAppkey:@"5730644d67e58ea066001f0c" reportPolicy:BATCH channelId:nil];
@@ -40,7 +42,7 @@
     }
     
     //发布时改为YES
-    [JPUSHService setupWithOption:launchOptions appKey:@"b7b12502ea5672f603fb80c1" channel:@"Publish channel" apsForProduction:NO];
+    [JPUSHService setupWithOption:launchOptions appKey:@"b7b12502ea5672f603fb80c1" channel:@"Publish channel" apsForProduction:YES];
     [NotificationCenter addObserver:self selector:@selector(login) name:kNotificationLoginSuccessed object:nil];
     
     [AVOSCloud setApplicationId:@"AtwJtfIJPKQFtti8D3gNjMmb-gzGzoHsz"
